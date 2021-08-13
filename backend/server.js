@@ -5,6 +5,7 @@ const cors = require("cors");
 const dotenv = require("dotenv");
 require("dotenv").config();
 const app = express();
+const productManagerAPI = require('./src/api/productManagerAPI');
 
 
 const PORT = process.env.PORT || 9999;
@@ -33,6 +34,8 @@ connection.once("open", () => {
 app.route('/').get((req, res) => {
     res.send('SPM Project');
 });
+
+app.use('/productmanager', productManagerAPI());
 
 
 app.listen(PORT, () => {
