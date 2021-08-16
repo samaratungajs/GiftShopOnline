@@ -8,7 +8,7 @@ const app = express();
 const productManagerAPI = require('./src/api/productManagerAPI');
 const supplierRegisterAPI = require('./src/api/supplierRegisterApi');
 const buyerRegisterApi = require("./src/api/buyerRegisterApi");
-//const buyerlogin = require("./src/routes/buyerlogin");
+const buyerlogin = require("./src/routes/buyerlogin");
 
 
 const PORT = process.env.PORT || 9999;
@@ -41,7 +41,7 @@ app.route('/').get((req, res) => {
 app.use('/productmanager', productManagerAPI());
 app.use('/buyer', buyerRegisterApi());
 app.use('/supplier', supplierRegisterAPI());
-// app.use('/buyerlogin', buyerlogin());
+app.use('/buyerlogin', buyerlogin);
 
 app.listen(PORT, () => {
     console.log('Server is up and running on port number:' + PORT)

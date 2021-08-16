@@ -12,7 +12,7 @@ const saultRounds = 10
 
 app.use(express.json())
 app.use(cors({
-  origin: ["http://localhost:8078/user"],
+  origin: ["http://localhost:9999/buyerlogin"],
   methods: ["GET" , "POST"],
   credentials: true
 }))
@@ -24,11 +24,17 @@ app.use(bodyParser.urlencoded({extended: true}))
 
 
 app.post("/register" , (req,res) =>{
-    const username = req.body.username
+    const email = req.body.email
+    const firstName = req.body.firstName
+    const lastName = req.body.lastName
+    const pNumber = req.body.pNumber
     bcrypt.hash(req.body.password ,saultRounds , (err,hash) =>{
       const password = hash
       const newUser = new User({
-        username,
+        firstName,
+        lastName,
+        pNumber,
+        email,
         password
     })   
     newUser.save().then(()=>{
@@ -54,7 +60,7 @@ app.get("/post",verifyToken,(req, res) =>{
 
 app.post("/login", async(req,res) =>{
   
-await User.findOne({ username: req.body.username }).then(
+await User.findOne({ email: req.body.email }).then(
     (user) => {
 
      bcrypt.compare(req.body.password, user.password , (err , result) =>{
@@ -67,7 +73,7 @@ await User.findOne({ username: req.body.username }).then(
       }})
     }).catch(
     (error) => {
-      res.send({message: "Wrong  Username"})
+      res.send({message: "Wrong  Email"})
     }
   );
 
