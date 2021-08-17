@@ -6,13 +6,10 @@ const dotenv = require("dotenv");
 require("dotenv").config();
 const app = express();
 const productManagerAPI = require('./src/api/productManagerAPI');
-<<<<<<< HEAD
 const aBuyerAPI = require('./src/api/Malith/buyer.api');
-=======
 const supplierRegisterAPI = require('./src/api/supplierRegisterApi');
 const buyerRegisterApi = require("./src/api/buyerRegisterApi");
 const buyerlogin = require("./src/routes/buyerlogin");
->>>>>>> 554cf70221d625f891ad8ee75f7a1a9753ec9926
 
 
 const PORT = process.env.PORT || 9999;
@@ -43,14 +40,10 @@ app.route('/').get((req, res) => {
 });
 
 app.use('/productmanager', productManagerAPI());
-<<<<<<< HEAD
 app.use('/abuyer', aBuyerAPI());
-
-=======
 app.use('/buyer', buyerRegisterApi());
 app.use('/supplier', supplierRegisterAPI());
 app.use('/buyerlogin', buyerlogin);
->>>>>>> 554cf70221d625f891ad8ee75f7a1a9753ec9926
 
 app.listen(PORT, () => {
     console.log('Server is up and running on port number:' + PORT)

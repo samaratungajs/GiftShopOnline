@@ -19,7 +19,7 @@ export default function CategoryCard() {
     </Col>
 
     <Col xs={6} md={3}><center>
-      <a href="/abuyer/search/?cat=watches" className="AcatCard"><Image src={img3} roundedCircle style={{maxWidth:"10rem"}} className="AcatImgEffect" /></a>
+      <a href="/abuyer/search/?cat=flowers" className="AcatCard"><Image src={img3} roundedCircle style={{maxWidth:"10rem"}} className="AcatImgEffect" /></a>
       <h4 className="mt-2" style={{fontFamily:"'Poppins', sans-serif"}}>Flowers</h4></center>
     </Col>
 
@@ -29,7 +29,7 @@ export default function CategoryCard() {
     </Col>
 
     <Col xs={6} md={3}><center>
-      <a href="/abuyer/search/?cat=flowers" className="AcatCard" style={{fontFamily:"'Poppins', sans-serif"}}><Image src={img4} roundedCircle style={{maxWidth:"10rem"}} className="AcatImgEffect" /></a>
+      <a href="/abuyer/search/?cat=watches" className="AcatCard" style={{fontFamily:"'Poppins', sans-serif"}}><Image src={img4} roundedCircle style={{maxWidth:"10rem"}} className="AcatImgEffect" /></a>
       <h4 className="mt-2" style={{fontFamily:"'Poppins', sans-serif"}}>Watches</h4></center>
     </Col>
 
