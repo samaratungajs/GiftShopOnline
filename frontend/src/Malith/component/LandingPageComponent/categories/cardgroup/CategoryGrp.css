@@ -1,5 +1,6 @@
 .AcatGrp{
     margin-top: 3rem;
+    font-family: 'Roboto', sans-serif;
 }
 
 .AcatGrpText{
@@ -12,3 +13,4 @@
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent; */
 }
+

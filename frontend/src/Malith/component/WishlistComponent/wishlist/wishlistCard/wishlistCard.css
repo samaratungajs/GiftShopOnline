@@ -1,0 +1,80 @@
+.AcatDropDownBtn{
+    margin-top: 20px;
+    margin-bottom: 20px;
+
+}
+
+
+.Aratings i {
+    font-size: 16px;
+    color: red
+}
+
+.Astrike-text {
+    color: red;
+    text-decoration: line-through;
+    margin-left: 5px;
+}
+
+.Aproduct-image {
+    width: 100%
+}
+
+.Adot {
+    height: 7px;
+    width: 7px;
+    margin-left: 6px;
+    margin-right: 6px;
+    margin-top: 3px;
+    background-color: blue;
+    border-radius: 50%;
+    display: inline-block
+}
+
+.Aspec-1 {
+    color: #938787;
+    font-size: 15px
+}
+
+.Ah5 {
+    font-weight: 650
+}
+
+.Apara {
+    font-size: 16px
+}
+
+.AaddNoteLink{
+    text-decoration: none !important;
+    color: rgb(88, 88, 88);
+    font-size: 17px;
+}
+
+.AaddNoteLink:hover{
+    color: rgb(255, 202, 28);
+}
+
+.writeInput{
+    font-size: 17px;
+    max-width: 100%;
+}
+
+.writeInputText{
+    font-weight: 100; 
+}
+
+
+.writeInput:focus{
+    outline: none;
+}
+
+.AwishTrashIcon{
+    color: rgb(77, 77, 77);
+    font-size: 25px;
+    margin-left: 12vh;
+}
+
+.AwishTrashIcon:hover{
+    color: rgb(219, 1, 1);
+    cursor: pointer;
+}

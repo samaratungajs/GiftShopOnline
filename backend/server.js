@@ -6,6 +6,7 @@ const dotenv = require("dotenv");
 require("dotenv").config();
 const app = express();
 const productManagerAPI = require('./src/api/productManagerAPI');
+const aBuyerAPI = require('./src/api/Malith/buyer.api');
 
 
 const PORT = process.env.PORT || 9999;
@@ -36,6 +37,7 @@ app.route('/').get((req, res) => {
 });
 
 app.use('/productmanager', productManagerAPI());
+app.use('/abuyer', aBuyerAPI());
 
 
 app.listen(PORT, () => {

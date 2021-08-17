@@ -12,7 +12,9 @@ const addGiftItems = async(req, res) => {
                 res.status(500).send({ error: error.message });
             });
     }
-}
+}  
+
+
 
 const getAllGiftItems = async(req, res) => {
     await giftItem.find({}).populate('giftitems', 'productName brand supplier category description quantity pricePItem wholesalePrice discountPItem deliveryCpItem imageURL status')
@@ -23,6 +25,10 @@ const getAllGiftItems = async(req, res) => {
         });
 
 }
+
+
+
+
 
 const getGiftitemsById = async(req, res) => {
     if(req.params && req.params.id){

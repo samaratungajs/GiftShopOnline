@@ -1,9 +1,8 @@
 const express = require('express');
 const router = express.Router();
-const controller = require('../controllers/productManagerController');
+const controller = require('../../controllers/Malith/buyer.controller');
 
 module.exports = function() {
-    router.post('/create', controller.addGiftItems);
     router.get('/getallitems', controller.getAllGiftItems);
   
 

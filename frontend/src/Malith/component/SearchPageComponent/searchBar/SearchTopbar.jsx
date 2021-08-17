@@ -1,11 +1,10 @@
 import React from "react";
 import Logo from "./GifteryLogo.png";
-import "./topbar.css";
-import {Redirect, useLocation} from 'react-router-dom'
+import {useLocation} from 'react-router-dom'
 import {useState } from 'react'
 import axios from 'axios' 
 
-export default function Topbar(props) {
+export default function SearchTopbar(props) {
   const [products, setProducts] = useState([]);
   const [searchKeyword, setSearchKeyword] = useState([]);
   const [status, setStaus] = useState(false);
@@ -35,15 +34,14 @@ const filterData=(producs, searchKey)=>{
 
   const handleSearchArea=(e)=>{
     e.preventDefault();
-    if(e){
-      <Redirect to="/abuyer/search"></Redirect>
-    }
-    axios.get("/abuyer/getallitems" + search).then((res)=>{
+
+    axios.get("http://localhost:9999/abuyer/getallitems" + search).then((res)=>{
         if (res.data) {
+            console.log(res.data)
             filterData(res.data, searchKeyword);
           }
+          console.log(search);
           props.prodProp(products)
-
     });
   }
 

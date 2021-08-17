@@ -3,7 +3,6 @@
 
 
 .AcatImgEffect{
-    filter: grayscale();
     height: 10rem;
     object-fit: cover;
 }
@@ -11,11 +10,24 @@
 
 .AcatImgEffect:hover{
     cursor: pointer;
-    filter: none;
-    transition: filter 0.4s ease-in-out;
+    border:5px solid rgb(3, 113, 146);
+    transition: filter 0.2s ease-in-out;
     border-radius: 50%;
 	/* border: 4px solid rgb(2, 172, 121); */
     transform: scale(1.1);
 }
 
+.AcatPerfumeImgEffect:hover{
+    cursor: pointer;
+    transition: filter 0.2s ease-in-out;
+    border-radius: 50%;
+	/* border: 4px solid rgb(2, 172, 121); */
+    transform: scale(1.1);
+}
+
+.AcatPerfumeImgEffect{
+    height: 150px;
+    width: 150px;
+    object-fit: cover;
+}
 
