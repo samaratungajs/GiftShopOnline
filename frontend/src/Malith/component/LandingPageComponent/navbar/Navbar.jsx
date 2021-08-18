@@ -20,31 +20,31 @@ export default function Navbar() {
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav Anavbar-nav me-auto mb-2 mb-lg-0">
               <li class="nav-item Anav-item">
-                <a class="nav-link Anav-link active Ahover" aria-current="page" href="#">
+                <a class="nav-link Anav-link active Ahover" aria-current="page" href="abuyer/search">
                   HOME
                 </a>
               </li>
 
               <li class="nav-item">
-                <a class="nav-link Anav-link active Ahover" aria-current="page" href="#">
+                <a class="nav-link Anav-link active Ahover" aria-current="page" href="abuyer/search/?cat=cakes">
                  CAKES
                 </a>
               </li>
 
               <li class="nav-item">
-                <a class="nav-link Anav-link active Ahover" aria-current="page" href="#">
+                <a class="nav-link Anav-link active Ahover" aria-current="page" href="abuyer/search/?cat=flowers">
                   FLOWERS
                 </a>
               </li>
 
               <li class="nav-item">
-                <a class="nav-link Anav-link active Ahover" aria-current="page" href="#">
+                <a class="nav-link Anav-link active Ahover" aria-current="page" href="abuyer/search/?cat=perfume">
                   PERFUMES
                 </a>
               </li>
 
               <li class="nav-item">
-                <a class="nav-link Anav-link active Ahover" aria-current="page" href="#">
+                <a class="nav-link Anav-link active Ahover" aria-current="page" href="abuyer/search/?cat=watches">
                   WATCHES
                 </a>
               </li>

@@ -1,17 +1,19 @@
 .ApriceRangeBox{
-    border-radius: 10% !important;
-    border-color:  rgb(10, 167, 184) !important;
+    border: none;
+
+    border: solid 2px rgb(1, 84, 90) !important ;
     margin-right: 10px;
+    max-height: 4vh;
+    margin-top: 7px;
+
 
 }
 .ApriceRangeBox:hover{
     border-color:  rgb(10, 167, 184);
-    transform: scale(1.1);
+    border: none;
+
 }
 
-.Arange-slider{
-    max-width: 100px;
-}
 
 .AviewIcon{
     font-size: 27px;

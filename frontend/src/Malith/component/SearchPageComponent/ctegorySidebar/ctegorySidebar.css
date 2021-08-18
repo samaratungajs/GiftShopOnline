@@ -1,24 +1,22 @@
-.AfixedCatCard{
-    top: 0;
-    bottom:0;
-    position:-webkit-sticky;
-    overflow-x:hidden;
-    margin-left: 10px;
-    box-shadow: none !important;
-    width: 14rem;
+.AcatCard {
+    font-size: 0.9rem;
+    cursor: pointer;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 50;
 }
 
-.AcatbrandLogo{
-    /* border:2px solid rgba(117, 117, 117, 0.445); */
-    align-items: center;
+.AlistItemAction:hover{
+    background-color: rgba(46, 154, 161, 0.308);
+
 }
 
-.AbrandCard{
-    width: 14rem;
-    margin-left: 10px;
+
+
+.AlistItem {
+    border: none !important;
+    padding: 0.3rem 0.4rem 0.3rem 0rem;
 }
 
-.AcatCardText{
-    font-family: 'Roboto', sans-serif;
-    font-weight: 500px;
+.AQuantityCat {
+    background-color: rgb(40, 161, 86);
 }

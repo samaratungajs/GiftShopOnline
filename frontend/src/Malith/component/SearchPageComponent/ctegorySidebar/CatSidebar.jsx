@@ -1,4 +1,5 @@
-import React, { Component } from 'react'
+import React, { useEffect } from 'react'
+import { Link } from "react-router-dom";
 import "./ctegorySidebar.css"
 import img1 from './images/1.png'
 import img2 from './images/2.png'
@@ -6,81 +7,88 @@ import img3 from './images/3.png'
 import img4 from './images/4.png'
 import img5 from './images/5.png'
 import img6 from './images/6.png'
+import { useState } from 'react';
+import {useLocation} from 'react-router-dom'
 
-export default class CatSidebar extends Component {
-            constructor(props) {
-            super(props);
-            this.state = { 
-                cssCake:"",
-                cssFlower:"",
-                cssPerfume:"",
-                cssWatch:"",
-                curClass:"w3-bar-item w3-button AcatCardText"
-             }
-       
-    }
+export default function CatSidebar() {
+         const [cake, setcake] = useState("");
+         const [watches, setwatches] = useState("");
+         const [perfumes, setperfumes] = useState("");
+         const [flowers, setflowers] = useState("");
+         const [all, setall] = useState("");
+         const {search} = useLocation();
 
-    hover1=()=>{
-        this.setState({cssFlower:"",cssWatch:"",cssPerfume:""})
-        this.setState({cssCake: "w3-bar-item w3-button tablink w3-cyan"});
-    }
-    hover2=()=>{
-        this.setState({cssFlower:"",cssWatch:"",cssCake:""})
-        this.setState({cssPerfume: "w3-bar-item w3-button tablink w3-cyan"});
-    }
-    hover3=()=>{
-        this.setState({cssFlower:"",cssPerfume:"",cssCake:""})
-        this.setState({cssWatch: "w3-bar-item w3-button tablink w3-cyan"});
-    }
+        useEffect(() => {
+           if(search==="?cat=flowers"){
+               setflowers("rgba(46, 153, 161, 0.808)")
+               setall("")
+               setwatches("")
+               setperfumes("")
+               setcake("")
+           }
 
-    hover4=()=>{
-        this.setState({cssWatch:"",cssPerfume:"",cssCake:""})
-        this.setState({cssFlower: "w3-bar-item w3-button tablink w3-cyan"});
-    }
+           else if(search==="?cat=cakes"){
+            setcake("rgba(46, 153, 161, 0.808)")
+            setall("")
+            setwatches("")
+            setperfumes("")
+            setflowers("")
+        }
+
+        else if(search==="?cat=watches"){
+            setwatches("rgba(46, 153, 161, 0.808)")
+            setall("")
+            setflowers("")
+            setperfumes("")
+            setcake("")
+        }
+
+        else if(search==="?cat=perfume"){
+            setperfumes("rgba(46, 153, 161, 0.808)")
+            setall("")
+            setwatches("")
+            setflowers("")
+            setcake("")
+        }
+
+        else{
+            setall("rgba(46, 153, 161, 0.808)")
+            setflowers("")
+            setwatches("")
+            setperfumes("")
+            setcake("")
+        }
+            
+        }, [search])
+
+
      
-    render() {
         return (
-<div>  
-                    <div className=" card w3-tab w3-light- AfixedCatCard w3-card ml-5" style={{maxHeight:"300px", backgroundColor:"white", marginTop:"38px"}}>
-                    <h6 className="card-header text-center"><b>Categories</b></h6>  
-                    <button className={this.state.cssCake?this.state.cssCake:this.state.curClass} onClick={this.hover1}>CAKES</button>
-                    <button className={this.state.cssPerfume?this.state.cssPerfume:this.state.curClass} onClick={this.hover2}>PERFUMES</button>
-                    <button className={this.state.cssWatch?this.state.cssWatch:this.state.curClass} onClick={this.hover3}>WATCHES</button>
-                    <button className={this.state.cssFlower?this.state.cssFlower:this.state.curClass} onClick={this.hover4}>FLOWERS</button>
-                    </div>
+            <div className="row">
+            <div className="card py-2 mt-4">
 
+        <h5 class="font-weight-bold">Categories</h5>
+                    <ul class="list-group">
+                    <Link to={"/abuyer/search"} style={{textDecoration:"none"}}><li class="list-group-item AlistItem AlistItemAction d-flex justify-content-between align-items-center AcatCard" style={{backgroundColor:all}}> All <span class="badge AQuantityCat badge-pill">8</span> </li></Link>
+                    <Link to={"/abuyer/search/?cat=cakes"} style={{textDecoration:"none"}}><li class="list-group-item AlistItem AlistItemAction d-flex justify-content-between align-items-center AcatCard" style={{backgroundColor:cake}}> Cakes <span class="badge AQuantityCat badge-pill">2</span> </li></Link>
+                    <Link to={"/abuyer/search/?cat=watches"} style={{textDecoration:"none"}}><li class="list-group-item AlistItem AlistItemAction d-flex justify-content-between align-items-center AcatCard" style={{backgroundColor:watches}}> Watches <span class="badge AQuantityCat badge-pill">2</span> </li></Link>
+                    <Link to={"/abuyer/search/?cat=perfume"} style={{textDecoration:"none"}}><li class="list-group-item AlistItem AlistItemAction d-flex justify-content-between align-items-center AcatCard" style={{backgroundColor:perfumes}}> Perfumes <span class="badge AQuantityCat badge-pill">2</span> </li></Link>
+                    <Link to={"/abuyer/search/?cat=flowers"} style={{textDecoration:"none"}}><li class="list-group-item AlistItem AlistItemAction d-flex justify-content-between align-items-center AcatCard" style={{backgroundColor:flowers}}> Flowers <span class="badge AQuantityCat badge-pill">2</span> </li></Link>
+                    </ul>
+                <div className="container-fluid p-3">
+                <h5 class="font-weight-bold mt-2">Brands</h5>
+                <div className="d-flex justify-content-around"><div><img src={img1} alt="" style={{maxWidth:"18vh"}}/></div><div><img src={img2} alt="" style={{maxWidth:"18vh"}}/></div></div>
+                <div className="d-flex justify-content-around"><div><img src={img4} alt="" style={{maxWidth:"18vh"}}/></div><div><img src={img3} alt="" style={{maxWidth:"18vh"}}/></div></div>
+                <div className="d-flex justify-content-around"><div><img src={img5} alt="" style={{maxWidth:"18vh"}}/></div><div><img src={img6} alt="" style={{maxWidth:"18vh"}}/></div></div>
+                
+                </div>
 
-                    <div className="container p-0">
-                        <div className="card AbrandCard">
-                        <div className="row">
-                            <div className="col-sm-6">
-                                <img src={img1} alt="" className="AcatbrandLogo" style={{maxWidth:"100px"}}/>
-                            </div>
-                            <div className="col-sm-6">
-                            <img src={img2} alt="" className="AcatbrandLogo" style={{maxWidth:"100px"}}/>
-                            </div>
+        </div>
 
-                            <div className="col-sm-6">
-                                <img src={img3} alt="" className="AcatbrandLogo" style={{maxWidth:"100px"}}/>
-                            </div>
-                            <div className="col-sm-6">
-                            <img src={img4} alt="" className="AcatbrandLogo" style={{maxWidth:"100px"}}/>
-                            </div>
+        </div>
+                  
 
-                            <div className="col-sm-6">
-                                <img src={img5} alt="" className="AcatbrandLogo" style={{maxWidth:"100px"}}/>
-                            </div>
-                            <div className="col-sm-6">
-                            <img src={img6} alt="" className="AcatbrandLogo" style={{maxWidth:"100px"}}/>
-                            </div>
-
-                            </div>
-                    
-                    </div>
-
-                    </div>
-
-            </div>
+            
         )
     }
-}
+

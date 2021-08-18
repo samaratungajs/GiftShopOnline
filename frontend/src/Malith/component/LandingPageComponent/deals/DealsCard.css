@@ -1,7 +1,7 @@
 .AcardHotPrice{
 
-      width:130px;
-      height:30px;
+      width:20em;
+      height:3em;
       font-size: 0.8rem;
       border-radius: 20px;
       color: white;
@@ -14,9 +14,8 @@
 
 .AfireIcon{
     background: -webkit-linear-gradient(rgb(250, 65, 65), rgb(255, 200, 19));
-    -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-
+    -webkit-background-clip: text;
 }
 
 .AcardHover:hover{

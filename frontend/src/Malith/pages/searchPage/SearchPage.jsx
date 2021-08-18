@@ -1,32 +1,68 @@
-import React, { Component } from 'react'
 import CatSidebar from '../../component/SearchPageComponent/ctegorySidebar/CatSidebar'
 import Topbar from '../../component/LandingPageComponent/topbar/Topbar'
 import ProductCardGrp from '../../component/SearchPageComponent/productList/productListGrp/ProductCardGrp'
 import Footer from '../../component/LandingPageComponent/footer/Footer'
-import BrandCard from '../../component/SearchPageComponent/brandCard/BrandCard'
+import Topcard from '../../component/SearchPageComponent/pricAndSortCard/Topcard'
+import {useLocation} from 'react-router-dom'
+import { useEffect, useState } from 'react'
+import axios from 'axios' 
+export default function SearchPage() {
+    const [products, setProducts] = useState([]);
+    const [status, setStaus] = useState(false);
+    const {search} = useLocation();
 
-export default class SearchPage extends Component {
-    componentDidMount() {
+    useEffect(() => {
         document.body.style.backgroundColor = "#e8e8e8"
+        const fetchProducts = async () =>{
+            const res = await axios.get("/abuyer/getallitems" + search);
+            console.log(res.data);
+            setProducts(res.data)
+        }
+        fetchProducts();
+
+
+    }, [search])
+
+    const productsProp=(data)=>{
+      setProducts(data);
+      setStaus(true);
     }
-    render() {
+    
+
         return (
             <>
-              <Topbar/>
+            <Topbar prodProp={productsProp}/>
+            <div class="container-fluid p-4 mt-50 mb-50" style={{fontFamily:"'Poppins', sans-serif"}}>
+       
+            
 
-              <div class="container-fluid">
-  <div class="row">
-    <div class= "main col-lg-2">
-         <div class="well"><CatSidebar/><BrandCard/></div>   
-    </div> 
-    <div class="sidebar col-lg-10">
-         <div class="well"><ProductCardGrp/></div>
-   </div>
-  </div>
+    <div class="row">
+
+    <div class="col-sm-3 col-lg-2">
+        
+        <CatSidebar/>
+
+    </div>
+
+
+
+
+
+
+  <div class="col-sm-9 col-lg-10 p-4" >
+
+      <Topcard results={products.length} status={status}/>
+       <ProductCardGrp products={products}/>
+      
+        
+        </div>
+  
+        
+       
 </div>
-<Footer/>
+</div>
 
-            </>
+<Footer/>
+</>
         )
     }
-}

@@ -1,6 +1,6 @@
 .AbottomBar{
     margin-top: 5rem;
-    height: 6rem;
+    height: 8%;
     width: auto;
     background-color: teal;
 }
@@ -22,7 +22,7 @@
 .AbottumText{
     vertical-align: middle;
     color: white;
-    font-family: 'Padauk', sans-serif;
+    font-family: 'Poppins', sans-serif;
     font-weight: 600;
     font-size: 20px;
 }
