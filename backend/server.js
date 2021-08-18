@@ -6,6 +6,7 @@ const dotenv = require("dotenv");
 require("dotenv").config();
 const app = express();
 const productManagerAPI = require('./src/api/productManagerAPI');
+const cartApi = require('./src/api/cartApi');
 
 
 const PORT = process.env.PORT || 9999;
@@ -36,6 +37,8 @@ app.route('/').get((req, res) => {
 });
 
 app.use('/productmanager', productManagerAPI());
+
+app.use('/cartApi',cartApi());
 
 
 app.listen(PORT, () => {
