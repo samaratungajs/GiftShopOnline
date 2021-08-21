@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Doughnut } from "react-chartjs-2";
 import { MDBContainer } from "mdbreact";
 import axios from 'axios';
+import Navbar1 from '../SideNavbar/nav1';
 
 
 

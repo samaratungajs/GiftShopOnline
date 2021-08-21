@@ -43,6 +43,7 @@
   
   .productscreen_right {
     flex: 0.2;
+    width: 100%;
   }
   
   .right__info ,.left_info{
@@ -52,11 +53,15 @@
     box-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
   }
   
+ 
   .right__info p {
     padding: 1rem;
     font-size: 0.8rem;
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
+
+
+  }
+  #N-delivery{
+  width: max-content;
   }
   
   .right__info p > button {
@@ -73,6 +78,11 @@
   .right__info select {
     padding: 10px 16px;
   }
+
+  #buybtn{
+    width: 220px;
+    height: 43px;
+  }
   
   @media (max-width: 960px) {
     .productscreen {
@@ -87,18 +97,20 @@
     .left_image {
       flex: 1;
     }
-  
+
     .left_info {
       flex: 1;
     }
   
-    .productscreen__right {
+    .productscreen_right {
       flex: 1;
       padding: 1rem;
+    
+      
     }
   
     .right__info {
-      width: 100%;
+      width: 100px;
       margin: 0;
     }
   }

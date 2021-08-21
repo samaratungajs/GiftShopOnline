@@ -29,6 +29,7 @@ export default class loginnav extends React.Component {
 
 <Nav/>
                <div class="row">
+               
                   <div class="col col-lg-2"><Accountant /></div>
                   <div class="col">
 

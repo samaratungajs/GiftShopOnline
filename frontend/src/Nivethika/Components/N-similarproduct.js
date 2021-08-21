@@ -26,6 +26,7 @@ class NSimilarproduct extends Component{
     .then(response => {
       this.setState({giftitems: response.data.data });
       console.log(response.data.data);
+    
 
     
   })

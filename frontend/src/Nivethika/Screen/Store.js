@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 
 import axios from 'axios';
 import "./Gift.css";
+import { Link } from 'react-router-dom';
 
 import DatePicker from "react-datepicker";
 
@@ -57,9 +58,9 @@ render() {
                                       
                  <label for="inputState" class="form-label">Preferred time</label>
                  <option disabled selected hidden>Preferred time</option>
-                            <option>Colombo</option>
-                            <option>Jaffna</option>
-                            <option>other</option>
+                 <option>Any Time (8AM-6PM)</option>
+                          <option>Any Time (7AM-11PM)</option>
+                          <option>Any Time (11AM-5PM)</option>
 
                             </select>
                                     </div>
@@ -68,7 +69,7 @@ render() {
 
                                     <div class="col-6">
                   <label for="inputAddress" class="form-label"></label>
-                  <input type="date" class="form-control" id="inputAddress" placeholder="Receipients mobile phone no" name="papertitle"  onChange={this.onChange} />
+                  <input type="date" class="form-control" id="inputAddress" placeholder="Pickup date" name="papertitle"  onChange={this.onChange} />
                                     </div><br/><br/>
                 <div class="col-6">
                 
@@ -114,15 +115,16 @@ render() {
 <div></div>
 
 <div class="col-6">
-                  <div class="d-flex justify-content-center ">
-                <button type="button" class="btn btn-outline-primary " id="N-back">Back</button>
+                        <div class="d-flex justify-content-center ">
+                        <Link to={`/`}><button type="submit" className="btn btn-outline-primary" id="N-proceed">Back</button></Link>
+          
                   </div>
                 </div>
 
 
                 <br/><br/><div class="col-6">
                   <div class="d-flex justify-content-center ">
-                    <button  type="submit" className="btn btn-primary" id="N-proceed">Proceed</button>
+                  <Link to={`/payment`}><button type="submit" className="btn btn-primary" id="N-proceed">Proceed</button></Link>
                   </div>
                                     </div>
                                     

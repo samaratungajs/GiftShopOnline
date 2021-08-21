@@ -5,6 +5,8 @@ import { RadioGroup, RadioButton } from 'react-radio-buttons';
 import {Table, Column, Cell} from 'fixed-data-table';
 
 
+import Navbar1 from '../SideNavbar/nav1';
+
 import BasicTable from './BasicTable';
 import "./Gift.css";
 import Step from './paystepnavigation';
@@ -42,7 +44,7 @@ class viewRevenue extends Component{
     render() { 
         return (
           <div>
-            
+            <Navbar1/>
             <br/><br/><div class="input-group  col-md-3 offset-md-9">
   <div class="form-outline">
 <input type="search" id="form1"placeholder="Search" class="form-control" />
@@ -56,7 +58,7 @@ class viewRevenue extends Component{
                     
                 <div class="col">
 <div className="container">
-        <div class="col-md-8 offset-md-1">
+        <div class="col-md-10 offset-md-1">
 
           <br />
           <div class="card card-outline-secondary p-3 mb-2  text-black border-secondary mb-3" color="blue">

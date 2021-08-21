@@ -19,9 +19,9 @@ export const SidebarData = [
     cName: 'nav-text'
   },
   {
-    title: ' logout',
-    path: '/products',
-    icon: <FaIcons.FaCartPlus />,
+    title: 'logout',
+    path: '/',
+    icon: <AiIcons.AiOutlineLogout />,
     cName: 'nav-text'
   },
 

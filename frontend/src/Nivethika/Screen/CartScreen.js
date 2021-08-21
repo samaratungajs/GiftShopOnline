@@ -59,6 +59,7 @@ class  CartScreen extends Component{
             .then(response => {
                 this.setState({product: response.data.data });
                 console.log(response.data.data);
+          
               
             })
     }
@@ -68,7 +69,7 @@ class  CartScreen extends Component{
     onDelete(e,itemid) {
         axios.delete(`http://localhost:9999/cartApi/deletecart/${itemid}`)
             .then(response => {
-                alert('cartitem is deleted');
+                alert('Item is removed from the cart');
                 window.location.reload(true);
                
             }).catch(error => {
@@ -111,15 +112,15 @@ class  CartScreen extends Component{
                     
                                     <img className="cartitem_image" src={item.imageURL} alt="productName"></img>
                                 </div>
-                                <Link to={`/product/${item._id}`} className="cartitem_name">
-                                    <p>{item.productname}</p>
-                                </Link>
+                               
+                                        <p><h5>{item.productname}</h5></p>
+                            
         
                
                             
                            
                         
-                                        <select className="cartitem__select" name="quantity" defaultValue={item.quantity} onChange={e=>this.onChange(e, item._id,e.target.value)}
+                                        <select className="cartitem__select" name="quantity"  defaultValue={item.quantity} onChange={e=>this.onChange(e, item._id,e.target.value)}
                 
                                         >
                                         <option value="1">Select Qty</option>
@@ -129,7 +130,7 @@ class  CartScreen extends Component{
                                     <option value="4">4</option>
                                 </select>
 
-                                <p className="cartitem_price">{this.state.total=item.price * item.quantity}</p>
+                               <h5> <p className="cartitem_price">{this.state.total=item.price * item.quantity}</p></h5>
                                       
                                    
                                
@@ -139,7 +140,7 @@ class  CartScreen extends Component{
                
                                        <div id="hide"> 
                             
-                                        {this.state.subtotal += this.state.total}
+                                      {this.state.subtotal += this.state.total}
                                         {this.state.totquantity += item.quantity}
                                         {this.state.delivery += item.deliverycharge*item.quantity}
                                         {this.state.discount+=item.discount*item.quantity}</div>
@@ -164,17 +165,17 @@ class  CartScreen extends Component{
 
                 <div className="cartScreen__right">
                     <div className="cartScreen_info">
-                        <p>Subtotal  (  {this.state.totquantity}  )    :   LKR { this.state.subtotal}</p>
-                            <p>Delivery charge:  LKR  {this.state.delivery}</p>
-                            <p>Discount:   LKR { this.state.discount}</p>
+                       <h5> <p>Subtotal  (  {this.state.totquantity}  )    :   LKR { this.state.subtotal}</p></h5>
+                          <h5>  <p>Delivery charge:  LKR  {this.state.delivery}</p></h5>
+                           <h5><p>Discount:   LKR { this.state.discount}</p></h5> 
                             <hr/>
                        
-                       Order total: LKR {this.state.discount+this.state.delivery+this.state.subtotal}<hr/>
+                      <h5>Order total: LKR {this.state.discount+this.state.delivery+this.state.subtotal}</h5> <hr/>
                     </div>
 
                         
                     <div>
-                        <button>Proceed to Checkout</button>
+                    <Link to={`/delivery`}><button>Proceed to Checkout</button></Link>
                     </div>
 
                 </div>

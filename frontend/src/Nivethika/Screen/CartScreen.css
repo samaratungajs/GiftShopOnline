@@ -72,6 +72,15 @@ padding:8px;
 }
 
 #hide{
-    background-color: #f4f4f4;
+  font-size: large ;
+  color: #f4f4f4;
   
+}
+.cartitem_price{
+    margin-top: 20px;
+    margin-right: 60px;
+}
+
+.cartitem__select{
+    margin-right: 60px;
 }

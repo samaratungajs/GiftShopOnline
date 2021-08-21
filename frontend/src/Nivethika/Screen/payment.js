@@ -59,10 +59,10 @@ class payment extends Component{
                
  <RadioGroup rootColor="#171717"onChange={this.onChange} horizontal value="card">
   <RadioButton value="card" name="card1" rootColor="#171717" pointColor="#185ac4" defaultChecked="true">
-  card
+  <img src="https://studiosinn.com/assets/public/img/credit-card-icons-png.png" width="200px" height="28px"></img>
   </RadioButton>
   <RadioButton value="paypal" rootColor="#171717" pointColor="#185ac4">
-  <i class="fa fa-paypal"></i>
+  <img src="https://image.flaticon.com/icons/png/128/888/888870.png" width="30px" height="30px"></img>
   </RadioButton>
 
 

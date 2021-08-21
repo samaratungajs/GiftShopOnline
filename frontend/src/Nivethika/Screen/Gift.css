@@ -2,7 +2,7 @@
 #N-proceed{
     margin-top: 3rem;
   
-    width: 50%;
+    width: 130px;
     
 }
 .N-deleivery-container{
@@ -61,3 +61,13 @@ width: 25%;
     margin-left: 15rem;
     width: 40%;
     }
+
+    input[type="date"]:before {
+        content: attr(placeholder) !important;
+        color: #171717;
+        margin-right: 0.5em;
+      }
+      input[type="date"]:focus:before,
+      input[type="date"]:valid:before {
+        content: "";
+      }

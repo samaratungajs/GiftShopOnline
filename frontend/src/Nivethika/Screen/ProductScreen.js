@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import "./ProductScreen.css";
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 
 
@@ -44,7 +45,7 @@ class ProductScreen extends Component{
         console.log('Data to send', cartitems);
         axios.post('http://localhost:9999/cartApi/createCart', cartitems)
             .then(response => {
-                alert('Data successfuly inserted');
+                alert('Item is added to the cart');
             }).catch(error => {
                 console.log(error.message);
                 alert(error.message);
@@ -78,36 +79,35 @@ class ProductScreen extends Component{
 
                         <div className="left_info">
 
-                            <p className="left_name" name="name" value={this.state.name} onChange={this.onChange}>{this.state.product.productName}</p>
-                        <p name="price" value={this.state.price} onChange={this.onChange}>Price:    LKR   {this.state.product.pricePItem}</p>
-                            <p>Description:        {this.state.product.description}</p>
+                            <p className="left_name" id="N-cartitem" name="name" value={this.state.name} onChange={this.onChange}><h2>{this.state.product.productName}</h2></p>
+                        <p id="N-cartitem"name="price" value={this.state.price} onChange={this.onChange} ><h5>Price:    LKR   {this.state.product.pricePItem}</h5></p>
+                            <p id="N-cartitem"><h5>Description:   {this.state.product.description}</h5></p>
                             
-                            <p name="Discount" value={this.state.product.discountPItem} onChange={this.onChange}>Discount:   LKR  {this.state.product.discountPItem}</p>
+                            <p id="N-cartitem"name="Discount" value={this.state.product.discountPItem} onChange={this.onChange}><h5>Discount:   LKR  {this.state.product.discountPItem}</h5></p>
                     </div>
                 </div>
                 <div className="productscreen_right">
-                    <div className="right__info">
-                        <p>
-                                Delivery charge:<span> LKR  {this.state.product.deliveryCpItem }</span>
+                    <div className="right__info"> 
+                        <p id="N-delivery">
+                         <h5>   Delivery charge: LKR  {this.state.product.deliveryCpItem }</h5>
                         </p>
-                        <p>
-                            Status:<span>In Stock</span>
+                        <p id="N-cartitem">
+                           <span><h5>  Status: In Stock</h5></span>
                         </p>
-                        <p>
-                            Qty
-                                <select name="quantity" value={this.state.quantity} onChange={this.onChange}>
+                        <p  id="N-delivery"> 
+                          <h5>Qty <select   name="quantity" value={this.state.quantity} onChange={this.onChange}>
                                 <option value="hidden">Select quantity</option>
                                      <option value="1">1</option>
                                     <option value="2">2</option>
                                     <option value="3">3</option>
                                     <option value="4">4</option>
-                            </select>
+                            </select></h5>
                         </p>
                         <p>
                             <button type="button" id="addbtn" class="btn btn-primary" onClick={this.onSubmit}>Add to cart</button>
                             </p>
                             <p>
-                           <button type="button" id="buybtn" class="btn btn-primary"> Buy now</button>
+                          <Link to={`/delivery`}><button type="button" id="buybtn" class="btn btn-primary" >Buy now </button></Link>
                         </p>
                         </div>
                         

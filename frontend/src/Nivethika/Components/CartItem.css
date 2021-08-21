@@ -36,6 +36,9 @@
     cursor: pointer;
     transition: all 0.3s ease-out;
   }
+
+  
+
   
   .cartitem_deleteBtn:hover,
   .cartitem_deleteBtn:active,

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 import axios from 'axios';
 import "./Gift.css";
-
+import { Link } from 'react-router-dom';
 import DatePicker from "react-datepicker";
 
 import "react-datepicker/dist/react-datepicker.css";
@@ -110,7 +110,7 @@ render() {
 
                                     <div class="col-6">
                   <label for="inputAddress" class="form-label"></label>
-                  <input type="date" class="form-control" id="inputAddress" placeholder="delivery date" name="papertitle"  onChange={this.onChange} />
+                  <input type="date" class="form-control" id="inputAddress" placeholder="Delivery date" name="papertitle"  onChange={this.onChange} />
                                     </div><br/><br/>          <div class="col-12">
                                         
 
@@ -129,7 +129,7 @@ render() {
 <br/><br/><h4><label>Senders Information</label></h4>
 <div class="col-md-6 ">
 <label for="inputEmail4" class="form-label"></label>
-<input type="text" class="form-control" placeholder=" first name" id="author" name="fname"  onChange={this.onChange} />
+<input type="text" class="form-control" placeholder=" First name" id="author" name="fname"  onChange={this.onChange} />
 </div>
 <div class="col-md-6 ">
 <label for="inputEmail4" class="form-label"></label>
@@ -147,14 +147,14 @@ render() {
     
  <div class="col-6">
                   <div class="d-flex justify-content-center ">
-                <button type="button" class="btn btn-outline-primary " id="N-back">Back</button>
+                  <Link to={`/`}><button type="submit" className="btn btn-outline-primary" id="N-proceed">Back</button></Link>
                   </div>
                 </div>
 
 
                 <br/><br/><div class="col-6">
                   <div class="d-flex justify-content-center ">
-                    <button  type="submit" className="btn btn-primary" id="N-proceed">Proceed</button>
+                  <Link to={`/payment`}><button type="submit" className="btn btn-primary" id="N-proceed">Proceed</button></Link>
                   </div>
                                     </div>
                                     

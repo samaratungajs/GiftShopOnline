@@ -30,7 +30,8 @@ function Accountant() {
         <nav className={sidebar ? 'nav-menu active' : 'nav-menu'}>
           <ul className='nav-menu-items' onClick={showSidebar}>
             <li className='navbar-toggle'>
-            <h1 id="accountanttitle">Accountant</h1><hr/>
+              <h1 id="accountanttitle">Accountant</h1>
+              
             </li>
 
            
@@ -39,10 +40,13 @@ function Accountant() {
                 <li key={index} className={item.cName}>
                   <Link to={item.path}>
                     {item.icon}
-                    <span >{item.title}</span>
+                    {item.title}
+                 
+                  
                   </Link>
+                  
                 </li>
-                
+              
               );
             })}
           </ul>
