@@ -1,0 +1,86 @@
+
+  .slideimager{
+      width: 100%;
+  }
+  .N-container {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    padding: 4px 16px;
+  }
+  
+  #N-cards-container {
+    overflow: hidden;
+    margin: 20px;
+  }
+  
+  .N-cards {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    width: 99999px;
+  }
+  
+  .N-card {
+    /* Add shadows to create the "card" effect */
+    -webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    background: #fff;
+    -webkit-transition: 0.3s;
+    transition: 0.3s;
+    width: 235px;
+    margin: 15px 7.5px;
+  }
+  
+  .N-card:hover {
+    -webkit-box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+  }
+  
+  .N-card .img {
+    max-width: 220px;
+    height: 220px;
+    display: inline-block;
+  }
+  
+  #N-slide-left-container,
+  #N-slide-right-container {
+    display: none;
+  }
+  
+  #N-slide-left-container.active,
+  #N-slide-right-container.active {
+    display: block;
+    cursor: pointer;
+  }
+  
+  .N-slide-left,
+  .N-slide-right {
+    border-color: #171717;
+    border-style: solid;
+    height: 20px;
+    width: 20px;
+    margin-top: 30%;
+  }
+  
+  .N-slide-left {
+    border-width: 4px 0 0 4px;
+    -webkit-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+    margin-left: 40%;
+  }
+  
+  .N-slide-right {
+    border-width: 4px 4px 0 0;
+    -webkit-transform: rotate(45deg);
+    transform: rotate(45deg);
+    margin-left: 22%;
+  }
+  
