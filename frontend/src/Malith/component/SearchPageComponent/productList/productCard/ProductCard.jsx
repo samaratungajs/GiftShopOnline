@@ -1,9 +1,43 @@
-import React from 'react'
+import axios from 'axios';
+import React, { useState } from 'react'
 import './productCard.css'
+import Swal from 'sweetalert2'
 
 export default function ProductCard({proc}) {
+  const [currentuser, setCurrentUser] = useState("Anjana");
+  
 
-        return (
+  const insertWishItems = async (proc) => {
+   const newWishlistItem = {
+      category:proc.category,
+      brand:proc.brand,
+      productName:proc.productName,
+      pricePItem:proc.pricePItem,
+      wholesalePrice:proc.wholesalePrice,
+      imageURL:proc.imageURL,
+      currentuser,
+      productId:proc._id,
+      description:proc.description,
+      supplier:proc.supplier,
+    };
+
+    try {
+    await axios.post("/awishlist/addwishlistitem", newWishlistItem);
+      // //  window.location.replace("/post/"+ res.data._id);
+      Swal.fire({
+        position: 'top-end',
+        icon: 'success',
+        title: 'Item saved',
+        showConfirmButton: false,
+        timer: 1100
+      })
+      
+    } catch (error) {
+      alert(error);
+    }
+  };
+
+      return (
           <div class="col-lg-3 mt-2">
 
 
@@ -17,7 +51,7 @@ export default function ProductCard({proc}) {
                   </div>
                   <h4 class="mb-0 font-weight-bold">LKR {proc.wholesalePrice}</h4><span class="Astrike-text">LKR {proc.pricePItem}</span>
                   <div class="text-muted mb-3">{proc.brand}</div> 
-                  <div class="d-flex justify-content-around"><i class="fas fa-shopping-cart AproductIcons AproductCartIcons"></i><i class="fas fa-heart AproductIcons AproductHeartIcons"></i></div>
+                  <div class="d-flex justify-content-around"><i class="fas fa-shopping-cart AproductIcons AproductCartIcons"></i><a onClick={()=>{insertWishItems(proc);}}><i class="fas fa-heart AproductIcons AproductHeartIcons"></i></a></div>
               </div>
           </div>
       </div>

@@ -4,6 +4,8 @@ import BuyerRegister from "./Eeswar/components/login/register"
 import BuyerLogin from "./Eeswar/components/login/login"
 import { BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 import WishListPage from "./Malith/pages/wishlistPage/WishListPage";
+import MyOrders from "./Malith/pages/myOrders/MyOrdersPage";
+import LineChart from "./Malith/component/myOrdersComponet/lineChart/LineChart";
 
 
 
@@ -21,8 +23,16 @@ function App() {
         <SearchPage/>
         </Route>
 
+        <Route exact component path="/abuyer/myorders">
+        <MyOrders/>
+        </Route>
+
         <Route exact component path="/abuyer/wishlist">
         <WishListPage/>
+        </Route>
+
+        <Route exact component path="/abuyer/chart">
+        <LineChart/>
         </Route>
         {/* Malith */}
 
