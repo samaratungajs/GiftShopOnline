@@ -2,6 +2,7 @@ import axios from 'axios';
 import React, { useState } from 'react'
 import './productCard.css'
 import Swal from 'sweetalert2'
+import { Link } from 'react-router-dom'
 
 export default function ProductCard({proc}) {
   const [currentuser, setCurrentUser] = useState("Anjana");
@@ -47,7 +48,7 @@ export default function ProductCard({proc}) {
               </div>
               <div class="card-body bg-light text-center">
                   <div class="mb-2">
-                      <h6 class="font-weight-semibold mb-2"> <a href="#" class="text-default mb-2" data-abc="true">{proc.productName}</a> </h6> <a href={`/abuyer/search/?cat=${proc.category}`} class="text-muted" data-abc="true">{proc.category}</a>
+                      <h6 class="font-weight-semibold mb-2"> <Link to={`/product/${proc._id}`} class="text-default mb-2" data-abc="true">{proc.productName}</Link> </h6> <a href={`/abuyer/search/?cat=${proc.category}`} class="text-muted" data-abc="true">{proc.category}</a>
                   </div>
                   <h4 class="mb-0 font-weight-bold">LKR {proc.wholesalePrice}</h4><span class="Astrike-text">LKR {proc.pricePItem}</span>
                   <div class="text-muted mb-3">{proc.brand}</div> 

@@ -18,5 +18,5 @@ const giftItemSchema = new mongoose.Schema({
 });
 
 
-const giftitem = mongoose.model('giftitem', giftItemSchema);
+const giftitem = mongoose.model('giftitems', giftItemSchema);
 module.exports = giftitem;
