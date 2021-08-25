@@ -1,0 +1,14 @@
+.AcatGrp{
+    margin-top: 3rem;
+}
+
+.AcatGrpText{
+    margin-left: 20px;
+    margin-bottom: 20px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 28px;
+    font-weight: 700;
+    /* background: -webkit-linear-gradient(rgb(2, 136, 85), rgb(1, 41, 22));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent; */
+}

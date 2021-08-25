@@ -1,0 +1,33 @@
+
+.Anavbar{
+  box-shadow: none !important;
+}
+
+.Anavbar-nav{
+  padding: 0.1em 0em;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+.Anavbar-nav .Anav-link{
+
+   font-size: 0.9em;
+    color: rgb(131, 131, 131) !important;
+    transition: 0.3 ease;
+    font-weight: 650;
+}
+
+.Anavbar-nav .Anav-link .Anav-item{
+  padding: 0 2em !important;
+}
+
+.Ahover:hover{
+  color: rgb(4, 134, 113) !important;
+}
+.Ahover{
+  margin-top: auto !important;
+}
+
+
+
+
