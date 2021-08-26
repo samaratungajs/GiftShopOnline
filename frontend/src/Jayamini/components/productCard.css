@@ -1,0 +1,22 @@
+.Ptooltip {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .Ptooltip .Ptooltiptext {
+    visibility: hidden;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+  
+    width: 120px;
+    top: 100%;
+    left: 50%;
+    margin-left: -60px; /* Use half of the width (120/2 = 60), to center the tooltip */
+  }
+  
+  .Ptooltip:hover .Ptooltiptext {
+    visibility: visible;
+  }

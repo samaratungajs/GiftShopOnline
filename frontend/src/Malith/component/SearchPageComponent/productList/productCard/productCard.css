@@ -8,8 +8,10 @@
 
 .AproductHeartIcons:hover{
     color: rgb(243, 28, 28);
+    cursor: pointer;
 }
 
 .AproductCartIcons:hover{
     color: rgb(8, 180, 94);
+    cursor: pointer;
 }
