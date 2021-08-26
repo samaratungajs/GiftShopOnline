@@ -1,5 +1,5 @@
 import React from 'react'
-// import './buyerReport.css'
+import './buyerReport.css'
 import imgLogo from './images/GifteryLogoGreen.png'
 export default function BuyerReport() {
     return (
