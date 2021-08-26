@@ -1,18 +1,9 @@
 const giftItem = require('../models/giftItem');
+const Supplier = require('../models/supplier');
+let User = require("../models/user");
+let Buyer = require("../models/buyer");
 
 //product management
-const addGiftItems = async(req, res) => {
-    if (req.body) {
-        const giftitem = new giftItem(req.body);
-        giftitem.save()
-            .then(data => {
-                res.status(200).send({ data: data });
-            })
-            .catch(error => {
-                res.status(500).send({ error: error.message });
-            });
-    }
-}
 
 const getAllGiftItems = async(req, res) => {
     await giftItem.find({}).populate('giftitems', 'productName brand supplier category description quantity pricePItem wholesalePrice discountPItem deliveryCpItem imageURL status')
@@ -61,12 +52,67 @@ const ApproveGiftItems= async(req, res) => {
     }
 }
 
+
+const getTotalUser = async(req, res) => {
+    await User.find({}).countDocuments()
+        .then(data => {
+            res.status(200).send({ data: data });
+        }).catch(error => {
+            res.status(500).send({ error: error.message });
+        });
+}
+
+const getTotalBuyer = async(req, res) => {
+    await Buyer.find({}).countDocuments()
+        .then(data => {
+            res.status(200).send({ data: data });
+        }).catch(error => {
+            res.status(500).send({ error: error.message });
+        });
+}
+
+const getTotalSupplier = async(req, res) => {
+    await Supplier.find({}).countDocuments()
+        .then(data => {
+            res.status(200).send({ data: data });
+        }).catch(error => {
+            res.status(500).send({ error: error.message });
+        });
+}
+
+const getTotalUnapprovedItems = async(req, res) => {
+    await giftItem.find({status:'unapproved'}).countDocuments()
+        .then(data => {
+            res.status(200).send({ data: data });
+        }).catch(error => {
+            res.status(500).send({ error: error.message });
+        });
+}
+
+
+
+const getUserByEmail= async (req, res) => {
+    if (req.params && req.params.email) {
+        const Email = req.params.email;
+      await User.findOne({email:Email}).populate('User', 'email password type')
+      .then(data => {
+        res.status(200).send({data: data});
+      })
+      .catch(error => {
+        res.status(500).send({ error: error.message });
+      });
+    }
+}  
+
 module.exports = {
-    addGiftItems,
+    
     getAllGiftItems,
     getGiftitemsById,
     giftItemsToApprove,
-    ApproveGiftItems
-
-
+    ApproveGiftItems,
+    getTotalUser,
+    getTotalBuyer,
+    getTotalSupplier,
+    getTotalUnapprovedItems,
+    getUserByEmail
 };

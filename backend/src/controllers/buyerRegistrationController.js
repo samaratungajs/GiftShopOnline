@@ -35,9 +35,25 @@ const getBuyerById = async (req, res) => {
     }
   }
 
+  const getBuyerByEmail= async (req, res) => {
+    if (req.params && req.params.email) {
+        const Email = req.params.email;
+      await Buyer.find({email:Email})
+      .then(data => {
+        res.status(200).send({data: data});
+      })
+      .catch(error => {
+        res.status(500).send({ error: error.message });
+      });
+    }
+  }  
+
+
+
 
 module.exports = {
     createNewBuyer,
     getAllBuyers,
     getBuyerById,
+    getBuyerByEmail
 };

@@ -14,6 +14,10 @@ const aWishlistAPI = require('./src/api/Malith/wishlist.api');
 const supplierRegisterAPI = require('./src/api/supplierRegisterApi');
 const buyerRegisterApi = require("./src/api/buyerRegisterApi");
 const buyerlogin = require("./src/routes/buyerlogin");
+const supplierlogin = require("./src/routes/supplierlogin");
+const userlogin = require("./src/routes/userlogin");
+const supplierItems = require("./src/api/supplierItemApi");
+const adminApi = require("./src/api/adminApi");
 
 
 
@@ -53,8 +57,12 @@ app.use('/abuyer', aBuyerAPI());
 app.use('/awishlist', aWishlistAPI());
 app.use('/buyer', buyerRegisterApi());
 app.use('/supplier', supplierRegisterAPI());
-app.use('/buyerlogin', buyerlogin);
+app.use('/supplieritems', supplierItems());
+app.use('/admin', adminApi());
 
+app.use('/buyerlogin', buyerlogin);
+app.use('/supplierlogin', supplierlogin);
+app.use('/userlogin', userlogin);
 
 app.listen(PORT, () => {
     console.log('Server is up and running on port number:' + PORT)
