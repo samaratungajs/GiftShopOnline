@@ -22,6 +22,18 @@ import Accountant from "./Nivethika/SideNavbar/Accountant";
 import Revenue from "./Nivethika/Screen/revenuecharts";
 
 
+import addItems from "./Jayamini/pages/addItems"
+import nav from "./Jayamini/components/Navbar"
+import viewItems from "./Jayamini/pages/viewItems"
+import supplierItems from "./Jayamini/pages/supplierItems";
+import approveItems from "./Jayamini/pages/approveProduct";
+import productReport from "./Jayamini/pages/productReport";
+import supplierStatistics from "./Jayamini/pages/supplierStatistics";
+import itemsArchive from "./Jayamini/pages/archiveitems";
+import itemsEdit from "./Jayamini/pages/editItems";
+import managerDashboard from "./Jayamini/pages/dashboard"
+
+
 function App() {
   return (
     <Router>
@@ -69,6 +81,19 @@ function App() {
           <Route exact path='/revenue' component={loginnav}></Route>
           <Route exact path='/view' component={loginnav}></Route>
         
+        {/* Jayamini */}
+        <Route path ="/panel" component={nav} exact/>
+        <Route path ="/additems" component={addItems} exact/>
+        <Route path ="/viewitems" component={viewItems} exact/>
+        <Route path ="/suppitems" component={supplierItems} exact/>
+        <Route path ="/approveitems" component={approveItems} exact/>       
+        <Route path ="/itemsreport" component={productReport} exact/>
+        <Route path ="/supplierstats" component={supplierStatistics} exact/> 
+        <Route path ="/managerdash" component={managerDashboard} exact/>   
+        <Route path ="/archive" component={itemsArchive} exact/>   
+        <Route path ="/editgift" component={itemsEdit} exact/>   
+        {/* Jayamini */}
+
 
         </Switch>
       </section>
