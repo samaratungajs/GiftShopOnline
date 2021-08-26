@@ -44,7 +44,7 @@ class viewRevenue extends Component{
     render() { 
         return (
           <div>
-            <Navbar1/>
+           
             <br/><br/><div class="input-group  col-md-3 offset-md-9">
   <div class="form-outline">
 <input type="search" id="form1"placeholder="Search" class="form-control" />

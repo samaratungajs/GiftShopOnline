@@ -46,6 +46,7 @@ class ProductScreen extends Component{
         axios.post('http://localhost:9999/cartApi/createCart', cartitems)
             .then(response => {
                 alert('Item is added to the cart');
+                window.location.reload(true);
             }).catch(error => {
                 console.log(error.message);
                 alert(error.message);
@@ -60,7 +61,7 @@ class ProductScreen extends Component{
                 .then(response => {
                     this.setState({product: response.data.data });
                     console.log(response.data.data);
-             
+                  
                   
                 })
         

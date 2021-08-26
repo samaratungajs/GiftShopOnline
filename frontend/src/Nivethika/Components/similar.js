@@ -3,13 +3,16 @@ import jQuery from 'jquery';
 /**
  * @description Change Home page slider's arrows active status
  */
- function updateSliderArrowsStatus(
+function updateSliderArrowsStatus(
+   
   cardsContainer,
   containerWidth,
   cardCount,
   cardWidth
 ) {
-  if (
+   if (
+    
+     
     $(cardsContainer).scrollLeft() + containerWidth <
     cardCount * cardWidth + 15
   ) {

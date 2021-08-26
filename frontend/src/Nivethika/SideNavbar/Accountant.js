@@ -5,6 +5,8 @@ import { Link } from 'react-router-dom';
 import { SidebarData } from './SidebarData';
 import './Navbar.css';
 import { IconContext } from 'react-icons';
+
+import Logo from '../../Malith/component/LandingPageComponent/topbar/GifteryLogo.png';
 import Nav1 from './nav1';
 
 
@@ -30,13 +32,18 @@ function Accountant() {
         <nav className={sidebar ? 'nav-menu active' : 'nav-menu'}>
           <ul className='nav-menu-items' onClick={showSidebar}>
             <li className='navbar-toggle'>
-              <h1 id="accountanttitle">Accountant</h1>
-              
+           <img src={Logo} alt="" style={{ maxWidth: "150px" }}  align="center" /><br/>
+            
+          
             </li>
-
+            <h1 id="accountanttitle">Accountant</h1><hr id="borderline" />
+          
+        <h6 id="dashboard">  <i class="fa fa-tachometer" aria-hidden="true"></i>    Dashboard</h6> <hr id="borderline"/>
            
             {SidebarData.map((item, index) => {
               return (
+
+                
                 <li key={index} className={item.cName}>
                   <Link to={item.path}>
                     {item.icon}

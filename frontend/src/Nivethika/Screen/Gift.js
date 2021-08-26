@@ -39,36 +39,36 @@ render() {
                                     <label>Contact Information</label>
                 <div class="col-md-6 ">
                   <label for="inputEmail4" class="form-label"></label>
-                  <input type="text" class="form-control" placeholder="Receipients first name" id="author" name="fname"  onChange={this.onChange} />
+                  <input type="text" class="form-control" placeholder="Receipients first name" id="author" name="fname" required="required" onChange={this.onChange} />
                 </div>
                 <div class="col-md-6 ">
                 <label for="inputEmail4" class="form-label"></label>
-                  <input type="text" class="form-control" placeholder="Receipients Last name" id="author" name="fname"  onChange={this.onChange} />
+                  <input type="text" class="form-control" placeholder="Receipients Last name" id="author" name="fname" required="required" onChange={this.onChange} />
                 </div>
                 <div class="col-6">
                   <label for="inputAddress" class="form-label"></label>
-                  <input type="text" class="form-control" id="inputAddress" placeholder="Receipients address line 1" name="papertitle"  onChange={this.onChange} />
+                  <input type="text" class="form-control" id="inputAddress" placeholder="Receipients address line 1" required="required" name="papertitle"  onChange={this.onChange} />
                                     </div>
 
                                     <div class="col-6">
                   <label for="inputAddress" class="form-label"></label>
-                  <input type="text" class="form-control" id="inputAddress" placeholder="City" name="papertitle"  onChange={this.onChange} />
+                  <input type="text" class="form-control" id="inputAddress" placeholder="City" name="papertitle" required="required"  onChange={this.onChange} />
                                     </div>
                                     <div class="col-6">
                   <label for="inputAddress" class="form-label"></label>
-                  <input type="text" class="form-control" id="inputAddress" placeholder="Receipients address line 2" name="papertitle"  onChange={this.onChange} />
+                  <input type="text" class="form-control" id="inputAddress" placeholder="Receipients address line 2" required="required" name="papertitle"  onChange={this.onChange} />
                                     </div>      
 
                                     <div class="col-6">
                   <label for="inputAddress" class="form-label"></label>
-                  <input type="text" class="form-control" id="inputAddress" placeholder="Receipients mobile phone no" name="papertitle"  onChange={this.onChange} />
+                  <input type="text" class="form-control" id="inputAddress" placeholder="Receipients mobile phone no" required="required" name="papertitle"  onChange={this.onChange} />
                                     </div><br/><br/>
 
                                     
                                     <br/><br/><br/><br/><h4><label>Delivery Information</label></h4><br/>
                                     <div class="col-md-6">
                  
-                                    <br/><select id="inputState" class="form-select" name="researchfield" title="Nearest Delivery city" onChange={this.onChange}>
+                                    <br/><select id="inputState" class="form-select" name="researchfield" required="required" title="Nearest Delivery city" onChange={this.onChange}>
                                         <option disabled selected hidden>Nearest Delivery City</option>
                                             <option>Colombo</option>
                           <option>Jaffna</option>
@@ -81,8 +81,8 @@ render() {
 
                                     <div class="col-md-6">
                  
-                <br/> <select id="inputState" class="form-select" name="researchfield" placeholder="Nearest Delivery city" onChange={this.onChange}>
-                            <option disabled selected hidden>location type</option>
+                <br/> <select id="inputState" class="form-select" name="researchfield"  required="required"placeholder="Nearest Delivery city" onChange={this.onChange}>
+                            <option disabled selected hidden>Location type</option>
                             <option>House/Residence</option>
                           <option>Office</option>
                           <option>Apartment/flat</option>
@@ -95,7 +95,7 @@ render() {
                                     
                                     <div class="col-md-6">
                                     <label for="inputEmail4" class="form-label"></label>
-                                        <select id="inputState" class="form-select" name="researchfield" placeholder="Nearest Delivery city" onChange={this.onChange}>
+                                        <select id="inputState" class="form-select" required="required" name="researchfield" placeholder="Nearest Delivery city" onChange={this.onChange}>
                                       
                  <label for="inputState" class="form-label">Preferred time</label>
                  <option disabled selected hidden>Preferred time</option>
@@ -110,14 +110,14 @@ render() {
 
                                     <div class="col-6">
                   <label for="inputAddress" class="form-label"></label>
-                  <input type="date" class="form-control" id="inputAddress" placeholder="Delivery date" name="papertitle"  onChange={this.onChange} />
+                  <input type="date" class="form-control" id="inputAddress" required="required" placeholder="Delivery date" name="papertitle"  onChange={this.onChange} />
                                     </div><br/><br/>          <div class="col-12">
                                         
 
                                    <br/> <label for="floatingTextarea" >Delivery Instructions (Optional) (Please do not use this section to request any preferred time for delivery other than the selected time slot)</label>
                 <div class="form-floating">
 
-                  <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea" name="abstract" value={this.state.abstract} onChange={this.onChange}></textarea>
+                  <textarea class="form-control" placeholder="Leave a comment here" required="required" id="floatingTextarea" name="abstract" value={this.state.abstract} onChange={this.onChange}></textarea>
 
                 </div>
                 
@@ -129,11 +129,11 @@ render() {
 <br/><br/><h4><label>Senders Information</label></h4>
 <div class="col-md-6 ">
 <label for="inputEmail4" class="form-label"></label>
-<input type="text" class="form-control" placeholder=" First name" id="author" name="fname"  onChange={this.onChange} />
+<input type="text" class="form-control" placeholder=" First name" id="author" required="required" name="fname"  onChange={this.onChange} />
 </div>
 <div class="col-md-6 ">
 <label for="inputEmail4" class="form-label"></label>
-<input type="text" class="form-control" placeholder=" Last name" id="author" name="fname"  onChange={this.onChange} />
+<input type="text" class="form-control" placeholder=" Last name" id="author" name="fname" required="required" onChange={this.onChange} />
 </div>
 <div class="col-6">
 <label for="inputAddress" class="form-label"></label>
@@ -142,7 +142,7 @@ render() {
 
 <div class="col-6">
 <label for="inputAddress" class="form-label"></label>
-<input type="email" class="form-control" id="inputAddress" placeholder="Senders email" name="papertitle"  onChange={this.onChange} />
+<input type="email" class="form-control" id="inputAddress" placeholder="Senders email" required="required" name="papertitle"  onChange={this.onChange} />
 </div><br/><br/>
     
  <div class="col-6">
@@ -154,7 +154,9 @@ render() {
 
                 <br/><br/><div class="col-6">
                   <div class="d-flex justify-content-center ">
-                  <Link to={`/payment`}><button type="submit" className="btn btn-primary" id="N-proceed">Proceed</button></Link>
+                     
+                          <button type="submit" className="btn btn-primary" id="N-proceed1">     <Link to={`/payment`} className="link">Proceed</Link></button>
+                       
                   </div>
                                     </div>
                                     
