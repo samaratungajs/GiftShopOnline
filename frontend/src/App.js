@@ -47,6 +47,7 @@ import supplierStatistics from "./Jayamini/pages/supplierStatistics";
 import itemsArchive from "./Jayamini/pages/archiveitems";
 import itemsEdit from "./Jayamini/pages/editItems";
 import managerDashboard from "./Jayamini/pages/dashboard"
+import BuyerReport from "./Malith/pages/buyerReport/BuyerReport";
 
 
 function App() {
@@ -97,13 +98,16 @@ function App() {
         <Route exact component path="/abuyer/chart">
         <LineChart/>
         </Route>
-        {/* Malith */}
           <Route exact component path="/abuyer/search">
             <SearchPage />
           </Route>
 
           <Route exact component path="/abuyer/wishlist">
             <WishListPage />
+          </Route>
+
+          <Route exact component path="/abuyer/buyerreport">
+            <BuyerReport />
           </Route>
           {/* Malith */}
 
