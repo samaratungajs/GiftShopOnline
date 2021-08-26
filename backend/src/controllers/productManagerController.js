@@ -15,6 +15,7 @@ const addGiftItems = async(req, res) => {
     }
 }
 
+
 const getAllGiftItems = async(req, res) => {
     await giftItem.find({}).populate('giftitems', 'productName brand supplier category description quantity pricePItem wholesalePrice discountPItem deliveryCpItem imageURL status')
         .then(data => {
@@ -87,6 +88,17 @@ const addArchiveItems = async(req, res) => {
     }
 }
 
+//get archive items
+const getArchived = async(req, res) => {
+    await archivedItem.find({}).populate('archiveditems', 'productName brand supplier category description quantity pricePItem wholesalePrice discountPItem deliveryCpItem imageURL status')
+        .then(data => {
+            res.status(200).send({ data: data });
+        }).catch(error => {
+            res.status(500).send({ error: error.message });
+        });
+
+}
+
 const viewArchivedItems = async(req, res) => {
     await archivedItem.find({}).populate('archiveditems', 'productName brand supplier category description quantity pricePItem wholesalePrice discountPItem deliveryCpItem imageURL status')
         .then(data => {
@@ -122,7 +134,9 @@ module.exports = {
     deleteGiftItems,
     addArchiveItems,
     viewArchivedItems,
-    getSupplierGiftItems
+    getSupplierGiftItems,
+    getArchived
+    
 
 
 };

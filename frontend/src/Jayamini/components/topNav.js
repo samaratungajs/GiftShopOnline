@@ -11,8 +11,8 @@ class Navbar1 extends Component {
    };
    const iStyle = {
     position: 'relative',
-    right: '+21px',
-    top:'-18px',
+    right: '+25px',
+    top:'-16px',
     display: 'inline-block'
     
  };
@@ -24,7 +24,7 @@ class Navbar1 extends Component {
             <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
               <span className="navbar-toggler-icon"></span>
             </button>
-            <div className="mt-3 ml-5"><i class="fas fa-envelope fa-2x text-white"></i><span class="counter counter-lg vis border-round text-white " style={iStyle}><i class="fas fa-circle text-danger"></i></span>
+            <div className="mt-3 ml-5"><i class="far fa-bell fa-2x text-white"></i><span class="counter counter-lg vis border-round text-white " style={iStyle}><i class="fas fa-circle text-danger"></i></span>
             </div>  
             </div>
          

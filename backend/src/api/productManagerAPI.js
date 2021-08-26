@@ -9,6 +9,8 @@ module.exports = function() {
     router.get('/getall', controller.getAllGiftItems);
     router.get('/supplieritems', controller.getSupplierGiftItems);
     router.get('/notapproved', controller.giftItemsToApprove);
+    router.post('/archive', controller.addArchiveItems);
+    router.get('/archiveitems', controller.getArchived);
 
 
     return router;

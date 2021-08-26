@@ -192,7 +192,7 @@ render() {
       <MDBCard className="w-100 ">
         
         <MDBCardBody>
-        <h3 align="center" className="mb-5 mt-2" >Items Waiting for Approval</h3>
+        <h3 align="center" className="mb-4 mt-2" >Items Waiting for Approval</h3>
         
           <MDBTable className="product-table">
          

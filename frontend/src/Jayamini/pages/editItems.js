@@ -171,7 +171,7 @@ class Researcher extends Component {
                     <div class="card card-outline-secondary bg-secondary bg-opacity-95 text-white" style={{paddingLeft:'40px',paddingRight:'40px'}}>
                         <div class="card-body">                      
 
-                            <h3 class="text-center">Add New Gift Items</h3>                            
+                            <h3 class="text-center">Edit Gift Item Details</h3>                            
 
               <div >
                 <div class="col-12 ">

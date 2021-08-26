@@ -28,9 +28,9 @@ function Navbar() {
 
         <nav className={sidebar ? 'nav-menu active' : 'nav-menu'}>
           <ul className='nav-menu-items' onClick={showSidebar}>
-         <div  align="center"><img src={Logo} alt="" style={{ maxWidth: "90px" }} className="mt-3" />
+         <div  align="center"><img src={Logo} alt="" style={{ maxWidth: "90px" }} className="mt-4 mb-1" />
          {/* <h5 className="mt-1 text-white text-muted">Product Manager</h5> */}
-        <h5 align="center "><i className="text-white " align="center">Product Manager</i> </h5>
+        <h5 align="center mt-2"><i className="text-white " align="center">Product Manager</i> </h5>
          <div href="/managerdash"><a href="/managerdash" style={{textDecorationLine:"none"}}><span className="text-white align-center" ><i class="fas fa-tachometer-alt mr-4"> </i>  Dashboard</span></a></div>
          </div> 
          <hr class=" text-white"/>

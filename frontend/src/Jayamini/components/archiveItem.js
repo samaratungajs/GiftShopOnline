@@ -5,7 +5,10 @@ import ReactNotification from 'react-notifications-component';
 import { store } from 'react-notifications-component';
 import "animate.css";
 import 'react-notifications-component/dist/theme.css'
-
+import 'bootstrap/dist/css/bootstrap.css';
+import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
+import Popover from 'react-bootstrap/Popover'
+import Button from 'react-bootstrap/Button';
 class eCommercePage extends Component {
 state = {
   data: [
@@ -76,80 +79,82 @@ state = {
 }
 
 componentDidMount(){
-  axios.get('http://localhost:9999/productmanager/getall')
+  axios.get('http://localhost:9999/productmanager/archiveitems')
   .then(response => {
       this.setState({items : response.data.data })
   })
 }
 
 handleDeleteItem = (item) => {
-  let giftItem = {
-    productName: item.productName,
-    brand: item.brand,
-    supplier: item.supplier,
-    category: item.category,
-    description: item.description,
-    quantity: item.quantity,
-    pricePItem: item.pricePItem,
-    wholesalePrice: item.wholesalePrice,
-    discountPItem: item.discountPItem,
-    deliveryCpItem: item.deliveryCpItem,
-    imageURL: item.imageURL,
-    status: 'archive'
-  }
-  console.log(giftItem)
-  axios.post('http://localhost:9999/productmanager/archive', giftItem)
-  .then(response => {
-    store.addNotification({
-      title: "Gift Item Moved",
-      message: "to archive",
-      type:"success",
-      container: "top-right",
-      insert: "top",
-      animationIn: ["animated", "fadein"],
-      animationOut: ["animated", "fadeout"],
-      
-      dismiss: {
-        duration: 2000,
-        showIcon:true
-      },
-      width: 400,
-     
-    })
-    axios.delete(`http://localhost:9999/productmanager/delete/${item._id}`)   
-  .then(response=>{
-    store.addNotification({
-      title: "Gift Item",
-      message: "Removed",
-      type:"warning",
-      container: "top-right",
-      insert: "top",
-      animationIn: ["animated", "fadein"],
-      animationOut: ["animated", "fadeout"],
-      
-      dismiss: {
-        duration: 3000,
-        showIcon:true
-      },
-      width: 400,
-     
-    })
-      this.componentDidMount();
-  }).catch(error=>{
-      console.log(error.message);
-      alert(error.message);
+  store.addNotification({
+    title: "Gift Item",
+    message: "Removed",
+    type:"warning",
+    container: "top-right",
+    insert: "top",
+    animationIn: ["animated", "fadein"],
+    animationOut: ["animated", "fadeout"],
+    
+    dismiss: {
+      duration: 2000,
+      showIcon:true
+    },
+    width: 400,
+   
   })
-  }).catch(error => {
-    console.log(error.message);
-    alert(error.message);
+  store.addNotification({
+    title: "Email sent",
+    message: "to supplier",
+    type:"warning",
+    container: "top-right",
+    insert: "top",
+    animationIn: ["animated", "fadein"],
+    animationOut: ["animated", "fadeout"],
+    
+    dismiss: {
+      duration: 2000,
+      showIcon:true
+    },
+    width: 400,
+   
   })
-
-  
 }
 
-onEdit(e) {
-  window.location=`/editgift`
+handleApproveItem = (item) => {
+  store.addNotification({
+    title: "Gift Item",
+    message: "Accepted",
+    type:"success",
+    container: "top-right",
+    insert: "top",
+    animationIn: ["animated", "fadein"],
+    animationOut: ["animated", "fadeout"],
+    
+    dismiss: {
+      duration: 2000,
+      showIcon:true
+    },
+    width: 400,
+   
+  })
+  store.addNotification({
+    title: "Email sent",
+    message: "to supplier",
+    type:"success",
+    container: "top-right",
+    insert: "top",
+    animationIn: ["animated", "fadein"],
+    animationOut: ["animated", "fadeout"],
+    
+    dismiss: {
+      duration: 2000,
+      showIcon:true
+    },
+    width: 400,
+   
+  })
 }
+
 
 render() {
 
@@ -170,11 +175,7 @@ render() {
         // <MDBInput type="number" default={row.qty} className="form-control" style={{ width: "100px" }} />,
         'amount': <strong>${row.qty * row.price}</strong>,
         'button':<div><button className="btn btn-dark m-1" > <i class='fas fa-pencil-alt'></i> </button> 
-        
-          <MDBTooltip placement="top"> <button className="btn btn-dark m-1" > <i class="fas fa-trash-alt"></i> </button>
-          <div>MDBTooltip on top</div>
-          </MDBTooltip>
-        </div>
+        <button className="btn btn-dark m-1" > <i class="fas fa-trash-alt"></i> </button></div>
         // <MDBTooltip placement="top">
         //     <MDBBtn color="primary" size="sm">
         //         X
@@ -188,11 +189,13 @@ render() {
     return (
     <MDBRow className="my-2" center>
        <ReactNotification/>
-      <MDBCard className="w-100 ">
+      <MDBCard className="w-100 bg-secondary bg-opacity-10">
+        
         <MDBCardBody>
-        <div align="right" >           
-                  </div>
+        <h3 align="center" className="mb-4 mt-2" >Archived Gift Items</h3>
+        
           <MDBTable className="product-table">
+         
           {/* columns={columns}  */}
             <MDBTableHead className="font-weight-bold" color="mdb-color lighten-5" >
             <tr>
@@ -204,7 +207,7 @@ render() {
               <th>Discount</th>
               <th>Quantity</th>
               <th>Price per Item</th>
-              <th>Actions</th>
+              <th >  <h6 className="font-weight-bold" align="center"><strong>Actions</strong></h6></th>
             </tr>
               </MDBTableHead>
             {/* rows={rows} */}
@@ -219,8 +222,8 @@ render() {
               <td className="pt-4">{item.discountPItem} %</td>
               <td className="pt-4">{item.quantity}</td>
               <td className="pt-4"><strong>{item.pricePItem} LKR</strong></td>
-              <td className="pt-4"><div><button onClick={this.onEdit} className="btn btn-dark m-1" data-toggle="tooltip" data-placement="top" title="Edit"> <i class='fas fa-pencil-alt'></i> </button> 
-              <button className="btn btn-danger m-1" data-toggle="tooltip" data-placement="top" title="Remove" onClick={() => this.handleDeleteItem(item)} > <i class="fas fa-trash-alt"></i> </button></div></td>
+              <td className="pt-4"><div align="center"><button className="btn btn-success m-1" onClick={() => this.handleApproveItem(item)}>Restore <i class="fas fa-trash-restore"></i> </button> 
+              </div></td>
               </tr>
             ))}
             </MDBTableBody >
