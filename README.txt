@@ -3,7 +3,6 @@
 
 ---
 
-
 ###GROUP MEMBERS	
 
 | ITNUMBER      | NAME          | Git username        |
