@@ -147,8 +147,9 @@ handleDeleteItem = (item) => {
   
 }
 
-onEdit(e) {
-  window.location=`/editgift`
+
+handleEditItem = (id) => {
+  window.location=`/editgift/${id}`
 }
 
 render() {
@@ -175,12 +176,7 @@ render() {
           <div>MDBTooltip on top</div>
           </MDBTooltip>
         </div>
-        // <MDBTooltip placement="top">
-        //     <MDBBtn color="primary" size="sm">
-        //         X
-        //     </MDBBtn>
-        //     <div>Remove item</div>
-        // </MDBTooltip>
+       
         }
       )
     });
@@ -219,7 +215,7 @@ render() {
               <td className="pt-4">{item.discountPItem} %</td>
               <td className="pt-4">{item.quantity}</td>
               <td className="pt-4"><strong>{item.pricePItem} LKR</strong></td>
-              <td className="pt-4"><div><button onClick={this.onEdit} className="btn btn-dark m-1" data-toggle="tooltip" data-placement="top" title="Edit"> <i class='fas fa-pencil-alt'></i> </button> 
+              <td className="pt-4"><div><button onClick={this.handleEditItem.bind(this, item._id)} className="btn btn-dark m-1" data-toggle="tooltip" data-placement="top" title="Edit"> <i class='fas fa-pencil-alt'></i> </button> 
               <button className="btn btn-danger m-1" data-toggle="tooltip" data-placement="top" title="Remove" onClick={() => this.handleDeleteItem(item)} > <i class="fas fa-trash-alt"></i> </button></div></td>
               </tr>
             ))}

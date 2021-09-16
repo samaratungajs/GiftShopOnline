@@ -136,7 +136,7 @@ function App() {
         <Route path ="/supplierstats" component={supplierStatistics} exact/> 
         <Route path ="/managerdash" component={managerDashboard} exact/>   
         <Route path ="/archive" component={itemsArchive} exact/>   
-        <Route path ="/editgift" component={itemsEdit} exact/>   
+        <Route path ="/editgift/:id" component={itemsEdit} exact/>   
         {/* Jayamini */}
 
 

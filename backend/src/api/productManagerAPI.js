@@ -11,6 +11,9 @@ module.exports = function() {
     router.get('/notapproved', controller.giftItemsToApprove);
     router.post('/archive', controller.addArchiveItems);
     router.get('/archiveitems', controller.getArchived);
+    router.put('/update/:id', controller.updateGiftItem);
+    router.put('/approveitem/:id', controller.ApproveGiftItems);
+    router.put('/rejectitem/:id', controller.RejectGiftItems);
 
 
     return router;

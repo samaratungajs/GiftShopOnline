@@ -6,7 +6,7 @@ import ReactNotification from 'react-notifications-component';
 import { store } from 'react-notifications-component';
 import "animate.css";
 import 'react-notifications-component/dist/theme.css'
-import firebase from "../components/firebase";
+import firebase from "../../Eeswar/components/SupplierItem/firebase";
 import TopNav from "../components/topNav";
 
 
@@ -40,6 +40,26 @@ class Researcher extends Component {
 
   }
 
+  componentDidMount(){
+    axios.get(`http://localhost:9999/productmanager/getitem/${this.props.match.params.id}`)
+    .then(response => {
+        this.setState({productName : response.data.data.productName})
+        this.setState({brand: response.data.data.brand})
+        this.setState({supplier: response.data.data.supplier})
+        this.setState({category: response.data.data.category})
+        this.setState({description: response.data.data.description})
+        this.setState({quantity: response.data.data.quantity})
+        this.setState({pricePItem: response.data.data.pricePItem})
+        this.setState({wholesalePrice: response.data.data.wholesalePrice})
+        this.setState({discountPItem: response.data.data.discountPItem})
+        this.setState({deliveryCpItem: response.data.data.deliveryCpItem})
+        this.setState({imgURL: response.data.data.imageURL})
+        this.setState({status: response.data.data.status})
+
+        console.log(response.data.data.productName)
+    })
+}
+  
  handleChange =(files)=>{
     this.setState({
       files:files

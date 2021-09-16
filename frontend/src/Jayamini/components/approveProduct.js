@@ -79,7 +79,7 @@ state = {
 }
 
 componentDidMount(){
-  axios.get('http://localhost:9999/productmanager/supplieritems')
+  axios.get('http://localhost:9999/productmanager/notapproved')
   .then(response => {
       this.setState({items : response.data.data })
   })
@@ -120,41 +120,59 @@ handleDeleteItem = (item) => {
   })
 }
 
-handleApproveItem = (item) => {
-  store.addNotification({
-    title: "Gift Item",
-    message: "Accepted",
-    type:"success",
-    container: "top-right",
-    insert: "top",
-    animationIn: ["animated", "fadein"],
-    animationOut: ["animated", "fadeout"],
-    
-    dismiss: {
-      duration: 2000,
-      showIcon:true
-    },
-    width: 400,
-   
-  })
-  store.addNotification({
-    title: "Email sent",
-    message: "to supplier",
-    type:"success",
-    container: "top-right",
-    insert: "top",
-    animationIn: ["animated", "fadein"],
-    animationOut: ["animated", "fadeout"],
-    
-    dismiss: {
-      duration: 2000,
-      showIcon:true
-    },
-    width: 400,
-   
+handleDeleteItem = (item) => {
+  axios.put(`http://localhost:9999/productmanager/approveitem/${item._id}`)   
+  .then(response=>{
+    store.addNotification({
+      title: "Email sent",
+      message: "to supplier",
+      type:"danger",
+      container: "top-right",
+      insert: "top",
+      animationIn: ["animated", "fadein"],
+      animationOut: ["animated", "fadeout"],
+      
+      dismiss: {
+        duration: 2000,
+        showIcon:true
+      },
+      width: 400,
+     
+    })
+    alert("Gift item Rejected")
+      this.componentDidMount();
+  }).catch(error=>{
+      console.log(error.message);
+      alert(error.message);
   })
 }
 
+handleApprove = (item) => {
+  axios.put(`http://localhost:9999/productmanager/approveitem/${item._id}`)   
+  .then(response=>{
+    store.addNotification({
+      title: "Email sent",
+      message: "to supplier",
+      type:"warning",
+      container: "top-right",
+      insert: "top",
+      animationIn: ["animated", "fadein"],
+      animationOut: ["animated", "fadeout"],
+      
+      dismiss: {
+        duration: 2000,
+        showIcon:true
+      },
+      width: 400,
+     
+    })
+    alert("Gift item Approved")
+      this.componentDidMount();
+  }).catch(error=>{
+      console.log(error.message);
+      alert(error.message);
+  })
+}
 
 render() {
 
@@ -222,7 +240,7 @@ render() {
               <td className="pt-4">{item.discountPItem} %</td>
               <td className="pt-4">{item.quantity}</td>
               <td className="pt-4"><strong>{item.pricePItem} LKR</strong></td>
-              <td className="pt-4"><div align="center"><button className="btn btn-success m-1" onClick={() => this.handleApproveItem(item)}>Approve <i class="far fa-check-circle"></i> </button> 
+              <td className="pt-4"><div align="center"><button className="btn btn-success m-1" onClick={() => this.handleApprove(item)}>Approve <i class="far fa-check-circle"></i> </button> 
               </div><div align="center">
               
                 <button className="btn btn-danger m-1 "  onClick={() => this.handleDeleteItem(item)}> <a className="text-danger">h</a>  Reject  <i class="fa fa-ban" aria-hidden="true"></i> </button> 
