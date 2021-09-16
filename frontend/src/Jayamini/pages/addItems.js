@@ -6,7 +6,7 @@ import ReactNotification from 'react-notifications-component';
 import { store } from 'react-notifications-component';
 import "animate.css";
 import 'react-notifications-component/dist/theme.css'
-import firebase from "../components/firebase";
+import firebase from "../../Eeswar/components/SupplierItem/firebase";
 import TopNav from "../components/topNav";
 
 
