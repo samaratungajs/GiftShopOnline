@@ -32,7 +32,7 @@ function Login() {
                     .then(response => {
                         console.log(response.data.data)
 
-                        window.location = `/${email}`
+                        window.location = `/`
 
 
                     })
@@ -68,7 +68,9 @@ function Login() {
             <div class='green-column'>
             <br/>
             <br/>
-            <div class="container" >
+            <br/>
+            <br/>
+            <div class="container aligin-center" >
             <form>
                 <div class="form-group">
                     <div >
@@ -77,13 +79,13 @@ function Login() {
                             <label>E-mail</label>
                             <input class="form-control" type="text" placeholder="Enter your E-mail" onChange={(e) => {setUsernameLog(e.target.value);}}></input>
                         </div>
-
+                        <br/>
                         <div class="form-group">
                             <label>Password </label>
                             <input class="form-control" type="password" placeholder="Enter your Password" onChange={(e) => {setPasswordLog(e.target.value);}}></input>
 
                             <div align="right">
-                            <span ><a href="/register">Create An Accounct</a></span>
+                            <span ><a href="/register">Create an account</a></span>
                             </div>
                             <button class="btn btn-primary" type="submit" onClick={login}>login</button>
                         </div>

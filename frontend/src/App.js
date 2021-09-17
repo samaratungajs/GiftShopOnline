@@ -9,7 +9,7 @@ import Nav from "./Nivethika/SideNavbar/nav1";
 
 
 import BuyerRegister from "./Eeswar/components/login/register"
-import BuyerLogin from "./Eeswar/components/login/login"
+import BuyerLogin from "./Eeswar/components/login/buyerlogin"
 import SupplierRegister from "./Eeswar/components/login/supplierRegister"
 import SupplierLogin from "./Eeswar/components/login/supplierlogin"
 import SupplierProfile from "./Eeswar/components/User/getSupplierdetailsByEmail"

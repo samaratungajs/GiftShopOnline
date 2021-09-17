@@ -97,7 +97,7 @@ const filterData=(producs, searchKey)=>{
             <div class="Adropdown-content" style={{fontFamily:"'Poppins', sans-serif"}}>
                 <a href="/abuyer/wishlist"><i class="fas fa-heart px-2"></i>Wishlist</a>
                 <a href="/abuyer/myorders"><i class="far fa-list-alt px-2"></i>My Orders</a>
-                <a href="#"><i class="fas fa-user-circle px-2"></i>Profile</a>
+                <a href="/login"><i class="fas fa-user-circle px-2"></i>Profile</a>
                 </div>
             </a>
 </div>
