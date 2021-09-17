@@ -15,6 +15,7 @@ const supplierRegisterAPI = require('./src/api/supplierRegisterApi');
 const buyerRegisterApi = require("./src/api/buyerRegisterApi");
 const buyerlogin = require("./src/routes/buyerlogin");
 
+
 const delivery_buy = require('./src/api/Nivethika/deliveryapi');
 
 const supplierlogin = require("./src/routes/supplierlogin");
@@ -28,6 +29,7 @@ const adminApi = require("./src/api/adminApi");
 const PORT = process.env.PORT || 9999;
 
 app.use(cors());
+
 app.use(bodyParser.json());
 
 const MONGODB_URL = process.env.MONGODB_URL;
