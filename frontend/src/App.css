@@ -40,6 +40,8 @@
 
 .some-page-wrapper {
   margin: 15px;
+  height: auto;
+  padding-bottom: 550px;
   
 }
 
