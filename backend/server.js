@@ -14,20 +14,22 @@ const aWishlistAPI = require('./src/api/Malith/wishlist.api');
 const supplierRegisterAPI = require('./src/api/supplierRegisterApi');
 const buyerRegisterApi = require("./src/api/buyerRegisterApi");
 const buyerlogin = require("./src/routes/buyerlogin");
-<<<<<<< HEAD
+
+
 const delivery_buy = require('./src/api/Nivethika/deliveryapi');
-=======
+
 const supplierlogin = require("./src/routes/supplierlogin");
 const userlogin = require("./src/routes/userlogin");
 const supplierItems = require("./src/api/supplierItemApi");
 const adminApi = require("./src/api/adminApi");
->>>>>>> ae3759e118e48a94ea1ee52e243a3d6a54d94652
+
 
 
 
 const PORT = process.env.PORT || 9999;
 
 app.use(cors());
+
 app.use(bodyParser.json());
 
 const MONGODB_URL = process.env.MONGODB_URL;

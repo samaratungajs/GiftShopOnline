@@ -1,3 +1,4 @@
+
 import React, { Component } from 'react';
 import Logo from "./GifteryLogo.png";
 import "./topbar.css";
@@ -95,17 +96,16 @@ class  Topbar extends Component{
             <a href="/login" className="Adropdown AtopUser">
                 
             <i className="fas fa-user AhoverTop my-2 Anavicon Adropbtn" style={{fontSize:"25px"}}></i> 
-<<<<<<< HEAD
             <div class="Adropdown-content">
                 <a href="#">Link 1</a>
                 <a href="#">Link 2</a>
                 <a href="#">Link 3</a>
-=======
+
             <div class="Adropdown-content" style={{fontFamily:"'Poppins', sans-serif"}}>
                 <a href="/abuyer/wishlist"><i class="fas fa-heart px-2"></i>Wishlist</a>
                 <a href="/abuyer/myorders"><i class="far fa-list-alt px-2"></i>My Orders</a>
                 <a href="#"><i class="fas fa-user-circle px-2"></i>Profile</a>
->>>>>>> ae3759e118e48a94ea1ee52e243a3d6a54d94652
+</div>
                 </div>
             </a>
 </div>

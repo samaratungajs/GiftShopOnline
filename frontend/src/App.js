@@ -1,7 +1,7 @@
 import LandingPage from "./Malith/pages/landingPage/LandingPage";
 import SearchPage from "./Malith/pages/searchPage/SearchPage";
-import { useState } from "react";
-import axios from "axios"
+
+
 import ProductScreen from "./Nivethika/Screen/ProductScreen";
 import CartScreen from "./Nivethika/Screen/CartScreen";
 import loginnav from "./loginnav";
