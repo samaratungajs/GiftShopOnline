@@ -1,17 +1,30 @@
-import React, { Component } from "react";
+import axios from "axios";
+import React, {useEffect, useState } from "react";
 import Footer from "../../component/LandingPageComponent/footer/Footer";
 import Topbar from "../../component/LandingPageComponent/topbar/Topbar";
 import SideAdd from "../../component/WishlistComponent/sideAppAd/SideAdd";
 import WishlistCardGrp from "../../component/WishlistComponent/wishlist/wishlistCardGrp/WishlistCardGrp";
+import Navbar from "../../component/LandingPageComponent/navbar/Navbar"
+export default function WishListPage() {
 
-export default class WishListPage extends Component {
-  componentDidMount() {
+const [wishlist, setwishlist] = useState([])
+
+  useEffect(() => {
     document.body.style.backgroundColor = "#e8e8e8";
+    const fetchWishlist = async () =>{
+    const res = await axios.get("/awishlist/getwishlistitem");
+       setwishlist(res.data.data);
+     
+       
   }
-  render() {
+        fetchWishlist();
+
+  }, [])
+
     return (
       <>
         <Topbar />
+        <Navbar/>
 
         <div class="container-fluid p-4 mt-50 mb-50" style={{fontFamily:"'Poppins Regular', sans-serif"}}>
         <div class="row">
@@ -24,7 +37,7 @@ export default class WishListPage extends Component {
 
 <div class="col-sm-9 col-lg-10 p-4" >
       
-        <WishlistCardGrp/>
+        <WishlistCardGrp wishlists={wishlist}/>
         </div>
 </div>
           
@@ -33,4 +46,4 @@ export default class WishListPage extends Component {
       </>
     );
   }
-}
+

@@ -4,7 +4,7 @@ const controller = require('../controllers/supplierRegisterController');
 
 module.exports = function () {
   router.post('/create', controller.createNewSupllier);
-  
+  router.get('/:email', controller.getSupplierByEmail);
 
   return router;
 } 

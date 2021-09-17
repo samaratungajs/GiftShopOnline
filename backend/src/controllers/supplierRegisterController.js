@@ -35,10 +35,22 @@ const getSupplierById = async (req, res) => {
     }
   }
 
-
+  const getSupplierByEmail= async (req, res) => {
+    if (req.params && req.params.email) {
+        const Email = req.params.email;
+      await Supplier.find({email:Email})
+      .then(data => {
+        res.status(200).send({data: data});
+      })
+      .catch(error => {
+        res.status(500).send({ error: error.message });
+      });
+    }
+  }  
 
 module.exports = {
     createNewSupllier,
     getAllSuppliers,
     getSupplierById,
+    getSupplierByEmail
 };

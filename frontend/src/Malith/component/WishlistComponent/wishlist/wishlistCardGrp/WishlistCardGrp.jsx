@@ -1,11 +1,11 @@
-import React, { Component } from 'react'
+import React from 'react'
 import WishlistCard from '../wishlistCard/WishlistCard'
 import './wishlistCardGrp.css'
 
-export default class WishlistCardGrp extends Component {
+export default function WishlistCardGrp({wishlists}) {
 
 
-    render() {
+
         return (
             <div>
                 <h4 className="mt-1">Defailt Wishlist</h4>
@@ -34,11 +34,9 @@ export default class WishlistCardGrp extends Component {
 
 
 
-                        <WishlistCard/>
-                        <WishlistCard/>
-                        <WishlistCard/>
-                        <WishlistCard/>
-                        <WishlistCard/>
+                    {wishlists.map((w)=>(
+                            <WishlistCard list={w}/>
+                        ))}
 
 
                         </div> 
@@ -47,4 +45,4 @@ export default class WishlistCardGrp extends Component {
             </div>
         )
     }
-}
+

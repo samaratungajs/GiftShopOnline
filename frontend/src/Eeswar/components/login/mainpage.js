@@ -25,12 +25,15 @@ function MainPage (){
           } )
           .catch()
 
-    return(
-        <dev>
-            <h3>{email}</h3>
-                <h3></h3>
+          
 
-        </dev>
+    return(
+      <Link
+      to={{
+        pathname: "/supplier/create",
+        state: {email}// your data array of objects
+      }}
+    />
 
     )
 
