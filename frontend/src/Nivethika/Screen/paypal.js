@@ -1,76 +1,49 @@
-import React, { Component } from 'react';
+import React, { useState } from "react";
+import { BrowserRouter as Router, Switch, Route} from 'react-router-dom';
+import axios from "axios"
+import PayPal from "./Paypal1";
 
-import axios from 'axios';
-import { RadioGroup, RadioButton } from 'react-radio-buttons';
+function Paypal() {
+  const [checkout, setCheckOut] = useState(false);
 
-import "./Gift.css";
+  const [inactive, setInactive] = useState(false);
 
-import Gift from './Gift';
-import Buy from './Buy';
-import Store from './Store';
+  const access_token = localStorage.getItem('token')
+    const[email , setUsername] = useState("")
 
-import Similar from '../Components/N-similarproduct';
-import Topbar from '../../Malith/component/LandingPageComponent/topbar/Topbar';
-import Footer from '../../Malith/component/LandingPageComponent/footer/Footer';
-
-class paypal extends Component{
-    constructor(props) {
-        super(props);
-
-        this.onChange = this.onChange.bind(this);
-        this.state = {
-            selectedOption: 'paypal'                                                                                 
+        let config = {
+          headers: {
+            'Authorization': 'Bearer ' + access_token
+          }
         }
-    }
+        axios.get( 
+            'http://localhost:9999/buyerlogin/post',
+            config)
+          .then( ( response ) => {
+            if(response.data.message){
+                alert(response.data.message)  
+            }else{   
+              setUsername(response.data.user.email)
+            }         
+          } )
+          .catch()
 
-
-    onChange(e) {
-      
-        this.setState({ selectedOption: e });
-      
-    }
-   
-   
-  
-     
-
-    render() {
-        return (
-            <div>
-
-<div class="col-md-6 offset-md-3">
-                    <br />
-
-                    <div class="card card-outline-secondary">
-                        <div class="card-body">
-                            <h5 class="text-center">Click Continue to PayPal log in and confirm your purchase.You'll be sent back to this page to finish up</h5>
-                            
-                            
-
-
-
-
-
-
-                                <button type="submit" id="N-button1" class="btn btn-success btn-lg btn-block" align="center" onClick={this.onUpdate}>Continue to Paypal</button><br/><br/>
-
-
-                   
-
-
-                            
-
-                        </div>
-                    </div>
-                </div>
-                 
-         </div>
-                
-        )
-    }
-
-
-
+  return (
+    <div className="App">
+     <h4 align="center"> Click Continue to PayPal to log in and confirm your purchase. You'll be sent back to this page to finish up.</h4>
+      {checkout ? (
+        <Route  render={(props) => (<PayPal {...props} Email={email}/>)} exact></Route>
+      ) : (
+        <button align="center" class="btn btn-primary"
+          onClick={() => {
+            setCheckOut(true);
+          }}
+        >
+          Checkout to Paypal
+        </button>
+      )}
+    </div>
+  );
 }
 
-export default paypal;
+export default Paypal;

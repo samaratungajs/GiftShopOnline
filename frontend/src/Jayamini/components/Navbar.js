@@ -18,16 +18,16 @@ function Navbar() {
     <>
 
       <IconContext.Provider value={{ color: '#fff' }}>
-        <div className='navbar'>
-          <Link to='#' className='menu-bars'>
+        <div className='mnavbar'>
+          <Link to='#' className='mmenu-bars'>
             <FaIcons.FaBars onClick={showSidebar} />
           </Link>
         </div>
 
        
 
-        <nav className={sidebar ? 'nav-menu active' : 'nav-menu'}>
-          <ul className='nav-menu-items' onClick={showSidebar}>
+        <nav className={sidebar ? 'mnav-menu active' : 'mnav-menu'}>
+          <ul className='mnav-menu-items' onClick={showSidebar}>
          <div  align="center"><img src={Logo} alt="" style={{ maxWidth: "90px" }} className="mt-4 mb-1" />
          {/* <h5 className="mt-1 text-white text-muted">Product Manager</h5> */}
         <h5 align="center mt-2"><i className="text-white " align="center">Product Manager</i> </h5>

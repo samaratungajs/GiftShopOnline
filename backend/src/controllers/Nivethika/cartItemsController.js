@@ -1,6 +1,6 @@
 
-const Cartitems = require('../models/CartItems');
-const GetItems = require('../models/giftItem');
+const Cartitems = require('../../models/CartItems');
+const GetItems = require('../../models/giftItem');
 //add items to cart
 const CreateCart = async (req, res) => {
     if (req.body) {
@@ -113,6 +113,32 @@ const getcartno = async (req, res) => {
     }
 }
 
+const totalpay_peruser = async (req, res) => {
+    if (req.params && req.params.username) {
+        const username = req.params.username;
+        const cart=await Cartitems.find({ username: username })
+        
+        if (cart.length > 0) {
+            totamount = 0;
+        totdelivery = 0;
+        totdiscount = 0;
+        totsubtotal = 0;
+            cart.map((cart) => {
+               
+                totsubtotal += cart.price*cart.quantity;
+                totdelivery += cart.deliverycharge*cart.quantity;
+                 totdiscount += cart.discount*cart.quantity;
+                totamount  =totsubtotal+totdelivery-totdiscount;
+            })
+         
+            
+        }
+       
+        res.status(200).send({totamount})
+          
+    }
+}
+
 module.exports = {
     CreateCart,
     getItemById,
@@ -121,5 +147,6 @@ module.exports = {
     updatecartitems,
     getallgiftitems,
     getallflowercategory,
-    getcartno
+    getcartno,
+    totalpay_peruser
 };

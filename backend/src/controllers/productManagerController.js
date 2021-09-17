@@ -61,6 +61,34 @@ const giftItemsToApprove = async(req, res) => {
 
 }
 
+//Update Items 
+const updateGiftItem = async(req, res) => {
+    let Itemid = req.params.id;
+    const { productName, brand, supplier, category, description, quantity, pricePItem, wholesalePrice, discountPItem, deliveryCpItem, imageURL, status } = req.body;
+    const updateItem = {
+        productName,
+        brand,
+        supplier,
+        category,
+        description,
+        quantity,
+        pricePItem,
+        wholesalePrice,
+        discountPItem,
+        deliveryCpItem,
+        imageURL,
+        status
+    }
+    await giftItem.findByIdAndUpdate(Itemid, updateItem)
+        .then(() => {
+            res.status(200).send({ status: "Item updated" })
+        }).catch((err) => {
+            console.log(err);
+            res.status(500).send({ status: "Error with updating data", error: err.message });
+        })
+}
+
+
 //remove giftitems
 const deleteGiftItems = async(req, res) => {
     let itemid = req.params.id;
@@ -123,6 +151,19 @@ const ApproveGiftItems= async(req, res) => {
     }
 }
 
+const RejectGiftItems= async(req, res) => {
+    if (req.params && req.params.id) {
+        let cid = req.params.id;
+        await giftItem.findByIdAndUpdate(cid,{$set:{status:'rejected'}})
+        .then(() => {
+            res.status(200).send({ status: "GiftItem approved" });
+        }).catch((err) => {
+            console.log(err);
+            res.status(500).send({ status: "Error with approval", error: err.message });
+        })
+    }
+}
+
 
 
 module.exports = {
@@ -132,10 +173,12 @@ module.exports = {
     giftItemsToApprove,
     ApproveGiftItems,
     deleteGiftItems,
+    RejectGiftItems,
     addArchiveItems,
     viewArchivedItems,
     getSupplierGiftItems,
-    getArchived
+    getArchived,
+    updateGiftItem
     
 
 

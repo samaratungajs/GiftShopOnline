@@ -1,11 +1,13 @@
 import LandingPage from "./Malith/pages/landingPage/LandingPage";
 import SearchPage from "./Malith/pages/searchPage/SearchPage";
 
+
 import ProductScreen from "./Nivethika/Screen/ProductScreen";
 import CartScreen from "./Nivethika/Screen/CartScreen";
 import loginnav from "./loginnav";
-import delivery from "./Nivethika/Screen/deliveryScreen";
+import Delivery from "./Nivethika/Screen/deliveryScreen";
 import Nav from "./Nivethika/SideNavbar/nav1";
+import Logincheck from "./Nivethika/Components/logincheck";
 
 
 import BuyerRegister from "./Eeswar/components/login/register"
@@ -33,7 +35,7 @@ import LineChart from "./Malith/component/myOrdersComponet/lineChart/LineChart";
 
 
 
-import payment from "./Nivethika/Screen/payment";
+import Payment from "./Nivethika/Screen/payment";
 import Accountant from "./Nivethika/SideNavbar/Accountant";
 import Revenue from "./Nivethika/Screen/revenuecharts";
 
@@ -52,7 +54,6 @@ import BuyerReport from "./Malith/pages/buyerReport/BuyerReport";
 
 
 function App() {
-
   const [inactive, setInactive] = useState(false);
 
   const access_token = localStorage.getItem('token')
@@ -74,6 +75,7 @@ function App() {
             }         
           } )
           .catch()
+
 
 
 
@@ -114,17 +116,19 @@ function App() {
 
 
         
-          <Route exact path='/product/:id' component={ProductScreen}></Route>
+          
           
          
          
-          <Route exact path='/cart' component={CartScreen}></Route>
+          <Route exact path='/cart' render={(props) => (<CartScreen {...props} Email={email}/>)} exact></Route>
           {/* <Route exact path='/login' component={login}></Route> */}
-          <Route exact path='/delivery' component={delivery}></Route>
-          <Route exact path='/payment' component={payment}></Route>
+          <Route exact path='/logincheck' component={Logincheck}></Route>
+          <Route exact path='/delivery' render={(props) => (<Delivery {...props} Email={email}/>)} exact></Route>
+          <Route exact path='/payment' render={(props) => (<Payment {...props} Email={email}/>)} exact></Route>
           <Route exact path='/Accountant' component={Accountant}></Route>
           <Route exact path='/revenue' component={loginnav}></Route>
           <Route exact path='/view' component={loginnav}></Route>
+          <Route exact path='/product/:id' render={(props) => (<ProductScreen {...props} Email={email}/>)} exact ></Route>
         
         {/* Jayamini */}
         <Route path ="/panel" component={nav} exact/>
@@ -136,7 +140,7 @@ function App() {
         <Route path ="/supplierstats" component={supplierStatistics} exact/> 
         <Route path ="/managerdash" component={managerDashboard} exact/>   
         <Route path ="/archive" component={itemsArchive} exact/>   
-        <Route path ="/editgift" component={itemsEdit} exact/>   
+        <Route path ="/editgift/:id" component={itemsEdit} exact/>   
         {/* Jayamini */}
 
 

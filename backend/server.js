@@ -7,17 +7,21 @@ require("dotenv").config();
 const app = express();
 const productManagerAPI = require('./src/api/productManagerAPI');
 
-const cartApi = require('./src/api/cartApi');
-
+const cartApi = require('./src/api/Nivethika/cartApi');
+const paymentApi = require('./src/api/Nivethika/paymentApi');
 const aBuyerAPI = require('./src/api/Malith/buyer.api');
 const aWishlistAPI = require('./src/api/Malith/wishlist.api');
 const supplierRegisterAPI = require('./src/api/supplierRegisterApi');
 const buyerRegisterApi = require("./src/api/buyerRegisterApi");
 const buyerlogin = require("./src/routes/buyerlogin");
+
+const delivery_buy = require('./src/api/Nivethika/deliveryapi');
+
 const supplierlogin = require("./src/routes/supplierlogin");
 const userlogin = require("./src/routes/userlogin");
 const supplierItems = require("./src/api/supplierItemApi");
 const adminApi = require("./src/api/adminApi");
+
 
 
 
@@ -51,7 +55,8 @@ app.route('/').get((req, res) => {
 app.use('/productmanager', productManagerAPI());
 
 app.use('/cartApi',cartApi());
-
+app.use('/pay', paymentApi());
+app.use('/delivery',delivery_buy());
 
 app.use('/abuyer', aBuyerAPI());
 app.use('/awishlist', aWishlistAPI());

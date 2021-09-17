@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+import StripeCheckout from 'react-stripe-checkout';
 import axios from 'axios';
 import { RadioGroup, RadioButton } from 'react-radio-buttons';
 
@@ -16,101 +16,93 @@ import Footer from '../../Malith/component/LandingPageComponent/footer/Footer';
 class cardpayment extends Component{
     constructor(props) {
         super(props);
-
+        this.onSubmit = this.onSubmit.bind(this);
         this.onChange = this.onChange.bind(this);
+        this.thanks = this.thanks.bind(this);
         this.state = {
-            selectedOption: 'paypal'                                                                                 
+            username:this.props.Email,
+            selectedOption: 'paypal',
+            amount: 0,
+            items:[]
         }
     }
 
+    thanks(token) {
+       
+        console.log(token);
+        
+    }
 
     onChange(e) {
       
         this.setState({ selectedOption: e });
+        
       
     }
+    componentDidMount() {
+        console.log(this.props.Email);
+        axios.get(`http://localhost:9999/cartApi/gettotal/${this.state.username}`)
+        .then(response => {
+            this.setState({amount: response.data });
+            console.log(this.state.amount);
+            console.log(Object.values(this.state.amount));
+            console.log(Number(Object.values(this.state.amount)))
+          
+          
+        })
+
+        axios.get(`http://localhost:9999/cartApi/getcartItems/${this.state.username}`)
+        .then(response => {
+            console.log(response.data.data);
+            this.setState({ items: response.data.data })
+            console.log(this.state.items)
+    }).catch(error => {
+     
+        console.log(error.message);
+      
+    })
+        
    
+  
+   }
    
+onSubmit(){
+    let subject = {
+        username: this.props.Email,
+       
+        orderitems: this.state.items,
+        amount:Number(Object.values(this.state.amount))
+    }
+    console.log(this.state.items);
+    console.log(this.state.subject);
+    axios.post('http://localhost:9999/pay/payment',subject)
+        .then(response => {
+            console.log(subject); 
+    }).catch(error => {
+       
+        console.log(error.message);
+        alert(error.message);
+
+    })
+    }
   
      
 
     render() {
         return (
-            <div>
+         
+            <div>{this.props.Email}
+                <StripeCheckout
+                    stripeKey="pk_test_51JXBWcHt6IMazlmL8u1g2nU4AlrX4pixRD5Fuchm8FyfQUPGjau20Bw7dYaixS4nVi3kYBPEOM7hcCcaQ7GWOJbQ0015Z4OMnG"
+                    name="Apple 1kg"
+                    amount={Number(Object.values(this.state.amount))}
+                    token={this.thanks}
+                    currency="INR"
+                    description="Fresh apple"
+                    onSubmit={this.on}
+                 
+                />
 
-<div class="col-md-6 offset-md-3">
-                    <br />
-
-                    <div class="card card-outline-secondary">
-                        <div class="card-body">
-                            <h3 class="text-center">Credit Card Payment</h3>
-                            <hr />
-                            <div class="alert alert-info p-2 pb-3">
-                                <a class="close font-weight-normal initialism" data-dismiss="alert" href="#"><samp>×</samp></a>
-                                CVC code is required.
-                            </div>
-
-
-                            <form class="form" role="form" id="form" onSubmit={this.onSubmit}>
-                                <div class="form-group">
-                                    <label for="cc_name">Email address</label>
-                                    <input type="email" class="form-control" id="email" name="email" required="required" value={this.state.email} onChange={this.onChange} />
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="cc_name">Card Holder's Name</label>
-                                    <input type="text" class="form-control" id="cc_name" name="cardholder" required="required" value={this.state.cardholder} onChange={this.onChange} />
-                                </div>
-
-                                <div class="form-group">
-                                    <label>Card Number</label>
-                                    <input type="text" class="form-control" autocomplete="off" maxlength="20" name="cardnumber" required="" value={this.state.cardnumber} onChange={this.onChange} />
-                                </div>
-                                <div class="form-group row">
-                                    <label class="col-md-12">Card Exp. Date</label>
-                                    <div class="col-md-6">
-                                    <input type="date" class="form-control" autocomplete="off" maxlength="20" name="cardnumber" required="" value={this.state.cardnumber} onChange={this.onChange} /> 
-                                    </div>
-                                  
-                                    <div class="col-md-6">
-                                        <input type="text" class="form-control" name="cvc" autocomplete="off" maxlength="3" title="Three digits at back of your card" required="" placeholder="CVC" value={this.state.cvc} onChange={this.onChange} />
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <label class="col-md-12">Amount</label>
-                                </div>
-
-                                <div class='form-row'>
-                                    <div class='col-md-12'>
-                                        <div class='form-control total btn btn-info'>
-                                            Total:
-                                            <span class='amount'>Rs.300</span>
-                                        </div>
-                                    </div>
-
-                                </div>
-                                <hr />
-
-
-
-
-
-
-                                <input type="hidden" name="to_name" id="to_name" value={this.state.cardholder} />
-                                <input type="hidden" name="to_email" id="to_email" value={this.state.email} />
-
-                                <button type="submit" id="N-button" class="btn btn-success btn-lg btn-block" align="center" onClick={this.onUpdate}>Submit</button><br/><br/>
-
-
-                                <script type="text/javascript"
-                                    src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
-
-
-                            </form>
-
-                        </div>
-                    </div>
-                </div>
                  
          </div>
                 
