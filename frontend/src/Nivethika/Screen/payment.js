@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 import "./ProductScreen.css";
 import axios from 'axios';
 import { RadioGroup, RadioButton } from 'react-radio-buttons';
@@ -20,12 +21,36 @@ class payment extends Component{
         this.onChange = this.onChange.bind(this);
   
         this.state = {
-            selectedOption: 'card'                                                                                 
+            email:'',
+            selectedOption: 'card'
+            
         }
     
     
 }
+    componentDidMount() {
+        const access_token = localStorage.getItem('token')
+ 
 
+        let config = {
+          headers: {
+            'Authorization': 'Bearer ' + access_token
+          }
+        }
+        axios.get( 
+            'http://localhost:9999/buyerlogin/post',
+            config)
+          .then( ( response ) => {
+            if(response.data.message){
+                alert(response.data.message)  
+            } else {
+              console.log(response.data.user.email);
+              this.setState({ email:response.data.user.email})
+              // console.log(this.state.email);
+            }         
+          } )
+          .catch()
+}
     onChange(e) {
       
         this.setState({ selectedOption: e });
@@ -77,7 +102,7 @@ class payment extends Component{
             </div>
            
             {this.state.selectedOption == "card" && <div>
-                <Card/>
+            <Route  render={(props) => (<Card {...props} Email={this.state.email}/>)} exact></Route>
                 </div>}
                 {this.state.selectedOption == "paypal" && <div>
                 <Paypal/>

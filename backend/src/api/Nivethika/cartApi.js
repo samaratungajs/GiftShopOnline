@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const cartController = require('../controllers/cartItemsController');
+const cartController = require('../../controllers/Nivethika/cartItemsController');
 
 
 module.exports = function () {
@@ -9,6 +9,7 @@ module.exports = function () {
     router.get('/getallgiftitems', cartController.getallgiftitems);
   
     router.get('/getallflower', cartController.getallflowercategory);
+    router.get('/gettotal/:username', cartController.totalpay_peruser);
     router.get('/getCartno/:username', cartController.getcartno);
     router.get('/getcartItems/:username', cartController.getcartItemByuserId);
     router.get('/getItems/:id', cartController.getItemById);

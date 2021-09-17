@@ -71,3 +71,16 @@ width: 25%;
       input[type="date"]:valid:before {
         content: "";
       }
+
+     #N-proceed1{
+        margin-top: 3rem;
+  
+        width: 130px;
+        columns: white;
+     }
+
+     
+.link {
+    color: #FFF;
+    text-decoration: none;
+  }

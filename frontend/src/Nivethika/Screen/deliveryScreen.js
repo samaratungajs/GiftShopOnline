@@ -74,10 +74,12 @@ class deliveryScreen extends Component{
           </div></div></div></div>
 
                
-            </div>
+                </div>
+           
            
             {this.state.selectedOption == "gift" && <div>
-                <Gift/>
+                   
+                   <Gift/>
                 </div>}
                 {this.state.selectedOption == "myself" && <div>
                 <Buy/>

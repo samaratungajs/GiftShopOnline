@@ -16,6 +16,7 @@ class ProductScreen extends Component{
         this.onChange = this.onChange.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
         this.state = {
+            username: this.props.Email,
             product: [],
             name:'',
             price: 0,
@@ -31,7 +32,7 @@ class ProductScreen extends Component{
     onSubmit(e) {
         e.preventDefault();
         let cartitems = {
-            username: "shamei",
+            username:   this.props.Email,
             product: this.state.product._id,
             productname:this.state.product.productName,
             quantity: this.state.quantity,
@@ -46,6 +47,7 @@ class ProductScreen extends Component{
         axios.post('http://localhost:9999/cartApi/createCart', cartitems)
             .then(response => {
                 alert('Item is added to the cart');
+                window.location.reload(true);
             }).catch(error => {
                 console.log(error.message);
                 alert(error.message);
@@ -60,7 +62,7 @@ class ProductScreen extends Component{
                 .then(response => {
                     this.setState({product: response.data.data });
                     console.log(response.data.data);
-             
+                  
                   
                 })
         
@@ -75,7 +77,8 @@ class ProductScreen extends Component{
                 <div className="productscreen_left">
                     <div className="left_image">
                         <img className="left_image"src={this.state.product.imageURL} alt="product name" />
-                         </div>
+                        </div>
+                      
 
                         <div className="left_info">
 
@@ -102,10 +105,21 @@ class ProductScreen extends Component{
                                     <option value="3">3</option>
                                     <option value="4">4</option>
                             </select></h5>
-                        </p>
-                        <p>
-                            <button type="button" id="addbtn" class="btn btn-primary" onClick={this.onSubmit}>Add to cart</button>
                             </p>
+                            {this.props.Email == null ?(
+                                <div>
+                                     <p>
+                            <Link to='/login'><button type="button" id="addbtn" class="btn btn-primary">Add to cart</button></Link>
+                            </p>
+
+                                </div> ): (
+                                         <p>
+                                         <button type="button" id="addbtn" class="btn btn-primary" onClick={this.onSubmit}>Add to cart</button>
+                                         </p>
+                                    )
+                        }
+                       
+
                             <p>
                           <Link to={`/delivery`}><button type="button" id="buybtn" class="btn btn-primary" >Buy now </button></Link>
                         </p>

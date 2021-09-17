@@ -26,8 +26,8 @@ class  CartScreen extends Component{
             subtotal: 0,
             qty: 0,
             delivery: 0,
-            discount:0
-           
+            discount:0,
+           username:this.props.Email
         
         }
     }
@@ -55,10 +55,11 @@ class  CartScreen extends Component{
         
     }
     componentDidMount() {
-        axios.get('http://localhost:9999/cartApi/getcartItems/shamei')
+        axios.get(`http://localhost:9999/cartApi/getcartItems/eesh@gmail.com`)
             .then(response => {
                 this.setState({product: response.data.data });
                 console.log(response.data.data);
+                console.log(this.state.product)
           
               
             })
@@ -96,7 +97,7 @@ class  CartScreen extends Component{
                 
                 <Cartnavigation/>
             <div className="cartScreen">
-                <div className="cartScreen__left">
+                <div className="cartScreen__left">{this.props.Email}{this.state.username}
                     <h2>Shopping cart</h2>
                         {this.state.product.length  === 0 &&
                             <div>
@@ -170,7 +171,7 @@ class  CartScreen extends Component{
                            <h5><p>Discount:   LKR { this.state.discount}</p></h5> 
                             <hr/>
                        
-                      <h5>Order total: LKR {this.state.discount+this.state.delivery+this.state.subtotal}</h5> <hr/>
+                      <h5>Order total: LKR {this.state.delivery+this.state.subtotal-this.state.discount}</h5> <hr/>
                     </div>
 
                         
