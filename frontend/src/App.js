@@ -10,7 +10,7 @@ import Nav from "./Nivethika/SideNavbar/nav1";
 import Logincheck from "./Nivethika/Components/logincheck";
 
 
-import BuyerRegister from "./Eeswar/components/login/register"
+import BuyerRegister from "./Eeswar/components/login/buyerregister"
 import BuyerLogin from "./Eeswar/components/login/buyerlogin"
 import SupplierRegister from "./Eeswar/components/login/supplierRegister"
 import SupplierLogin from "./Eeswar/components/login/supplierlogin"

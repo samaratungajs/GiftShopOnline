@@ -41,7 +41,7 @@ function Login() {
                         window.location='/'
                     }
                     else if(response.data.data.usertype == "productManager"){
-                        window.location=`/`
+                        window.location=`/managerdash`
                     }
                     
                     

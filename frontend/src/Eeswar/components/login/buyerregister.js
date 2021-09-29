@@ -2,6 +2,8 @@ import React, { useState } from "react"
 import axios from "axios"
 import '../../../App.css'
 import img from "../../photos/sale.jpg"
+import Topbar from "../../../Malith/component/LandingPageComponent/topbar/Topbar";
+import Footer from "../../..//Malith/component/LandingPageComponent/footer/Footer";
 
 
 function Register() {
@@ -33,8 +35,9 @@ function Register() {
 
   return (
 
-
-
+<div>
+  <div>
+<Topbar />
     <div class='some-page-wrapper'>
       <div class='row'>
 
@@ -101,7 +104,9 @@ function Register() {
         </div>
       </div>
     </div>
-
+    </div>
+    <Footer/>
+</div>
   );
 }
 
