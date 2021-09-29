@@ -51,25 +51,26 @@ function Register() {
                                     <label for="email">Email</label>
                                     <input type="email" class="form-control" placeholder="example@gmail.com" onChange={(e) => { setUsernameReg(e.target.value); }} />
                                 </div>
-
+                                <br/>    
                                 <div class="form-group">
                                     <label for="pwd">Password</label>
                                     <input type="password" class="form-control" placeholder="*******" onChange={(e) => { setPasswordReg(e.target.value); }} />
                                 </div>
-
+                                <br/>
                                 <div class="form-group">
+
                                     <label for="inputState" class="form-label">User Type</label>
                                     <select id="category" class="form-select" name="category" onChange={(e) => { setUserType(e.target.value); }}>
                                         <option selected>Choose...</option>
                                         <option value="admin">Admin</option>
                                         <option value="accountant">Accountant</option>
                                         <option value="productManager">Product Manager</option>
-                                        
-
                                     </select>
-
                                 </div>
+                                <br/>
+                                <div class="form-group"> 
                                 <button type="submit" class="btn btn-primary" onClick={register}>Sign Up</button>
+                                </div>
                             </form>
             </div>
         </div>

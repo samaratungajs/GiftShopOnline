@@ -7,6 +7,7 @@ import './Navbar.css';
 import { IconContext } from 'react-icons';
 import axios from "axios"
 import * as CgIcons  from "react-icons/cg";
+import Logo from "../../../Jayamini/components/GifteryLogo.png"
 
 
 function Navbar() {
@@ -75,7 +76,11 @@ function Navbar() {
 
         <nav className={sidebar ? 'nav-menu active' : 'nav-menu'}>
           <ul className='nav-menu-items' onClick={showSidebar}>
-            
+          <div  align="center"><img src={Logo} alt="" style={{ maxWidth: "90px" }} className="mt-4 mb-1" />
+          <h5 align="center mt-2"><i className="text-white " align="center">Supplier</i> </h5>
+          <div href="/dashboard"><a href="/dashboard" style={{textDecorationLine:"none"}}><span className="text-white align-center" ><i class="fas fa-tachometer-alt mr-4"> </i>  Dashboard</span></a></div>
+           </div>
+           <hr class=" text-white"/>
             <li className='navbar-toggle'>
             <div class="text-white">
                 
@@ -96,9 +101,13 @@ function Navbar() {
           </ul>
 
           <div className="side-menu-footer">
+            <div>
+          <h6 className="text-white mt-4"> <a href="/" style={{textDecorationLine:"none"}}>Logout <i class="fas fa-sign-out-alt"></i></a></h6>
+            </div>
+            <br/>
         <div className="avatar">
           <CgIcons.CgProfile/>
-          
+
         </div>
         <div className="user-info">
           <h5>{email}</h5>

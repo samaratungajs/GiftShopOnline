@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import Nav from "../SideNavbar/Navbar"
 import firebase from "./firebase";
+import Header from './header'
 
 
 
@@ -112,7 +113,9 @@ class AddSupplierItems extends Component {
 
     render() {
         return (
-
+            <div>
+                 <Header/>
+               
             <div className="row">
                 <div className="col col-lg-2"><Nav /></div>
                 <div className="col">
@@ -203,6 +206,7 @@ class AddSupplierItems extends Component {
                     </div>
                 </div>
             </div>
+            </div> 
 
         )
     }

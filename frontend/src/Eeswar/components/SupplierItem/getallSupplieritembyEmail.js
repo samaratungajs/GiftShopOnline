@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component} from 'react';
 import axios from 'axios';
 import Navbar from '../SideNavbar/Navbar';
 import './table.css'
@@ -11,7 +11,8 @@ class ViewSupplierItems extends Component {
             Items:[],
             headers:[
                 { ProductName: 1, Brand: 'Watches', Description: 2100, Quantity: 3,Price:6300.00,Status:"Unapprove",Action:"" }
-            ]
+            ],
+            search:''
 
         }
 
@@ -52,7 +53,15 @@ class ViewSupplierItems extends Component {
      }
     
      renderTableData() {
-      return this.state.Items.map((item, index) => {
+      
+        const{search} = this.state;
+
+        const searchItems = this.state.Items.filter(item=>{
+             return item.productName.toLowerCase().indexOf(search.toLowerCase()) !== -1               
+      })
+        
+
+      return searchItems.map((item, index) => {
          
          return (
             <tr key={index}>
@@ -72,23 +81,31 @@ class ViewSupplierItems extends Component {
     }
 
 
-
+    onChange = e =>{
+        this.setState({search : e.target.value})
+    }
 
 
 
 
     render(){
+        
+        
         return(
             <div>
                 <Header/>
             <div className="row" >
             <div className="col col-lg-2"><Navbar/></div>
             <div className="col">
-            
-
-
+        
             <div>  
-           
+            <br/>
+            <div align='center'>
+           <input type="search" placeholder="Search Items" className="prompt" onChange={this.onChange} />
+           <i className="search icon"></i>
+           </div>
+           <br/>
+          
            <div>
             <h1 id='title'></h1>
             <table id='students'>
