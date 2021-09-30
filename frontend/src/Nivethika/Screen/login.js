@@ -36,22 +36,22 @@ const Login = () => {
             <button onClick={e => navigate(e, name)}>Login</button>
          </div>
 
-      
-      <br />
-      {cookies.Name && (
-      <div>
-         Name: <p>{cookies.Name}</p>
-      </div>
-      )}
-      {cookies.Password && (
-      <div>
-         Password: <p>{cookies.Password}</p>
-      </div>
-      )}
+
+         <br />
+         {cookies.Name && (
+            <div>
+               Name: <p>{cookies.Name}</p>
+            </div>
+         )}
+         {cookies.Password && (
+            <div>
+               Password: <p>{cookies.Password}</p>
+            </div>
+         )}
       </div>
 
 
-      
+
    );
 };
 export default Login;

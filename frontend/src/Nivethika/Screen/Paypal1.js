@@ -35,13 +35,22 @@ class Paypal1 extends Component {
         axios.get(`http://localhost:9999/cartApi/getcartItems/${this.props.Email}`)
         .then(response => {
             console.log(response.data.data);
-            this.setState({ items: response.data.data })
-            console.log(this.state.items)
+
+            let data = [];
+            this.setState({ items: response.data.data }, () => {
+                this.state.items.map((item, index) => {
+                   
+                    data.push(item.product)
+                });
+                this.setState({options:data})
+            })
+            console.log(this.state.options)
     }).catch(error => {
      
         console.log(error.message);
       
     })
+        
 
        
         window.paypal
@@ -64,25 +73,35 @@ class Paypal1 extends Component {
                     const order = await actions.order.capture();
                     console.log(order);
                   
-                    console.log(this.state.items);
+                    console.log(this.state.options);
                     let subject = {
-                        username: this.state.username,
+                        username: this.props.Email,
                        
-                        orderitems: this.state.items,
-                        amount:Number(Object.values(this.state.amount))
+                        orderitems: this.state.options,
+                        amount: Number(Object.values(this.state.amount)),
+                        status: 'completed',
+                        Date:new Date().toDateString() + ""
+                    
                     }
                     console.log(this.state.items);
-                    console.log(this.state.subject);
+                    console.log(subject);
                     axios.post('http://localhost:9999/pay/payment',subject)
                         .then(response => {
                             console.log(subject); 
                     }).catch(error => {
                        
                         console.log(error.message);
-                        alert(error.message);
-            
+                      
                     })
-                  
+                    axios.delete(`http://localhost:9999/cartApi/deleteusername/${this.props.Email}`)
+                    .then(response => {
+                        console.log('deleted cart user successfully');
+                 }).catch(error => {
+                   
+                    console.log(error.message);
+                    alert(error.message);
+            
+                })
 
                 },
                 onError: (err) => {

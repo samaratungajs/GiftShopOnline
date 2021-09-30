@@ -41,19 +41,19 @@ class stepnavigation extends Component{
 
 <div class="md-stepper-horizontal blue">
     <div class="md-step active done">
-      <div class="md-step-circle"><span>1</span></div>
+      <div class="md-step-circle"><span1>1</span1></div>
       <div class="md-step-title">Shopping cart</div>
       <div class="md-step-bar-left"></div>
       <div class="md-step-bar-right"></div>
     </div>
     <div class="md-step active editable">
-      <div class="md-step-circle"><span>2</span></div>
+      <div class="md-step-circle"><span1>2</span1></div>
       <div class="md-step-title">Delivery Information</div>
       <div class="md-step-bar-left"></div>
       <div class="md-step-bar-right"></div>
     </div>
     <div class="md-step active">
-      <div class="md-step-circle"><span>3</span></div>
+      <div class="md-step-circle"><span1>3</span1></div>
       <div class="md-step-title">Confirmation & Payment</div>
       <div class="md-step-bar-left"></div>
       <div class="md-step-bar-right"></div>

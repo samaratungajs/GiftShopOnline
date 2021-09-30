@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 const deliver_pickupSchema = new mongoose.Schema({
-    Username:{type: "string", required: true},
+    username:{type: "string", required: true},
     pickup_location: {type: "string", required: true},
     preferred_time: {type: "string", required: true },
     pickup_date:{type: Date, required: true},

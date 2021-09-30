@@ -1,6 +1,7 @@
 
-const Cartitems = require('../../models/CartItems');
+const Cartitems = require('../../models/Nivethika/CartItems');
 const GetItems = require('../../models/giftItem');
+const Payment = require('../../models/Nivethika/payment');
 //add items to cart
 const CreateCart = async (req, res) => {
     if (req.body) {
@@ -59,6 +60,21 @@ const ondelete = async (req, res) => {
     }
 }
 
+//delete cartitems according to username
+const payDelete = async (req, res) => {
+    if (req.params && req.params.username) {
+        const username = req.params.username;
+        await Cartitems.deleteMany({username})
+            .then(data => {
+                res.status(200).send({ data: data });
+            }).catch(error => {
+                res.status(500).send({ status:"Error in deleting user" ,error: error.message });
+            })
+    
+        
+    }
+}
+
 //update the cartitem quantity
 const updatecartitems = async (req, res) => {
     if (req.params && req.params.id&& req.body) {
@@ -89,17 +105,120 @@ const getallgiftitems=async (req, res) => {
     //get flower category count
     
 const getallflowercategory = async (req, res) => {
-    if (req.params && req.params.category) {
-        let cid = req.params.category;
-        await GetItems.find({ "category": { $eq: cid } }).countDocuments()
-            .then(data => {
-                res.status(200).send({ tot: data });
-            }).catch(error => {
-                res.status(500).send({ error: error.message });
-            });
+    
+    await GetItems.find({ "category":"flowers" }).countDocuments()
+    .then(data => {
+        res.status(200).send({ tot: data });
+    }).catch(error => {
+        res.status(500).send({ error: error.message });
+    });
+
         
-    }
+    
 }
+
+const getallcakescategory=async (req, res) => {
+    
+    await GetItems.find({ "category": "cakes" }).countDocuments()
+        .then(data => {
+            res.status(200).send({ tot: data });
+        }).catch(error => {
+            res.status(500).send({ error: error.message });
+        });
+    
+
+}
+
+const Rgetallcakescategory = async (req, res) => {
+    
+    const Rcake = await GetItems.find({ "category": "cakes" });
+   
+    let totalamount = 0;
+    if (Rcake.length > 0) {
+        Rcake.map((sub) => {
+            totalamount += sub.wholesalePrice * sub.quantity
+            console.log(totalamount);
+        })
+    }
+       
+    res.status(200).send({ totalamount: totalamount });
+}
+ 
+
+const Rgetallflowercategory = async (req, res) => {
+    
+    const Rcake = await GetItems.find({ "category": "flowers" });
+   
+    let totalamount = 0;
+    if (Rcake.length > 0) {
+        Rcake.map((sub) => {
+            totalamount += sub.wholesalePrice * sub.quantity
+            console.log(totalamount);
+        })
+    }
+       
+    res.status(200).send({ totalamount: totalamount });
+}
+
+  
+const Rgetallwatchcategory = async (req, res) => {
+    
+    const Rcake = await GetItems.find({ "category": "watches" });
+   
+    let totalamount = 0;
+    if (Rcake.length > 0) {
+        Rcake.map((sub) => {
+            totalamount += sub.wholesalePrice * sub.quantity
+            console.log(totalamount);
+        })
+    }
+       
+    res.status(200).send({ totalamount: totalamount });
+}
+
+
+const Rgetallperfumecategory = async (req, res) => {
+    
+    const Rcake = await GetItems.find({ "category": "perfume" });
+   
+    let totalamount = 0;
+    if (Rcake.length > 0) {
+        Rcake.map((sub) => {
+            totalamount += sub.wholesalePrice * sub.quantity
+            console.log(totalamount);
+        })
+    }
+       
+    res.status(200).send({ totalamount: totalamount });
+}
+    
+
+
+
+const getallwatchcategory=async (req, res) => {
+    
+    await GetItems.find({ "category": "watches" }).countDocuments()
+        .then(data => {
+            res.status(200).send({ tot: data });
+        }).catch(error => {
+            res.status(500).send({ error: error.message });
+        });
+    
+
+}
+
+const getallperfumecategory=async (req, res) => {
+    
+    await GetItems.find({ "category": "perfume" }).countDocuments()
+        .then(data => {
+            res.status(200).send({ tot: data });
+        }).catch(error => {
+            res.status(500).send({ error: error.message });
+        });
+    
+
+}
+
 
 const getcartno = async (req, res) => {
     if (req.params && req.params.username) {
@@ -148,5 +267,14 @@ module.exports = {
     getallgiftitems,
     getallflowercategory,
     getcartno,
-    totalpay_peruser
+    totalpay_peruser,
+    payDelete,
+    getallcakescategory,
+    getallwatchcategory,
+    getallperfumecategory,
+    Rgetallcakescategory,
+    Rgetallflowercategory,
+    Rgetallwatchcategory,
+    Rgetallperfumecategory
+
 };

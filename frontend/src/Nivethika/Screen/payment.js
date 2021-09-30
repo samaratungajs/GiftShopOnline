@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Switch, Route} from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import "./ProductScreen.css";
 import axios from 'axios';
 import { RadioGroup, RadioButton } from 'react-radio-buttons';
@@ -14,114 +14,114 @@ import Topbar from '../../Malith/component/LandingPageComponent/topbar/Topbar';
 import Footer from '../../Malith/component/LandingPageComponent/footer/Footer';
 import cardpayment from './cardpayment';
 
-class payment extends Component{
-    constructor(props) {
-        super(props);
+class payment extends Component {
+  constructor(props) {
+    super(props);
 
-        this.onChange = this.onChange.bind(this);
-  
-        this.state = {
-            email:'',
-            selectedOption: 'card'
-            
-        }
-    
-    
-}
-    componentDidMount() {
-        const access_token = localStorage.getItem('token')
- 
+    this.onChange = this.onChange.bind(this);
 
-        let config = {
-          headers: {
-            'Authorization': 'Bearer ' + access_token
-          }
-        }
-        axios.get( 
-            'http://localhost:9999/buyerlogin/post',
-            config)
-          .then( ( response ) => {
-            if(response.data.message){
-                alert(response.data.message)  
-            } else {
-              console.log(response.data.user.email);
-              this.setState({ email:response.data.user.email})
-              // console.log(this.state.email);
-            }         
-          } )
-          .catch()
-}
-    onChange(e) {
-      
-        this.setState({ selectedOption: e });
-      
+    this.state = {
+      email: '',
+      selectedOption: 'card'
+
     }
-   
-   
-  
-     
-
-    render() {
-        return (
-            <div>
-
-                <div>
-                    
-                <Topbar/>
-            </div>
-                <div>
-                    
-                
-                    <Step/>
-<div className="container">
-        <div class="col-md-6 offset-md-3" align="center">
-
-          <br />
-          <div class="card card-outline-secondary p-3 mb-2   text-black border-secondary mb-3" color="blue">
-            <div class="card-body">
-                                    <h4> <label>Select your payment method</label></h4>
-                                    
-               
- <RadioGroup rootColor="#171717"onChange={this.onChange} horizontal value="card">
-  <RadioButton value="card" name="card1" rootColor="#171717" pointColor="#185ac4" defaultChecked="true">
-  <img src="https://studiosinn.com/assets/public/img/credit-card-icons-png.png" width="200px" height="28px"></img>
-  </RadioButton>
-  <RadioButton value="paypal" rootColor="#171717" pointColor="#185ac4">
-  <img src="https://image.flaticon.com/icons/png/128/888/888870.png" width="30px" height="30px"></img>
-  </RadioButton>
 
 
-</RadioGroup>
+  }
+  componentDidMount() {
+    const access_token = localStorage.getItem('token')
 
-                                    
 
-        
-          </div></div></div></div>
-
-               
-            </div>
-           
-            {this.state.selectedOption == "card" && <div>
-            <Route  render={(props) => (<Card {...props} Email={this.state.email}/>)} exact></Route>
-                </div>}
-                {this.state.selectedOption == "paypal" && <div>
-                <Paypal/>
-                </div>}
-               
-           
-                <div>
-                    
-              
-                </div>
-                
-                <div>
-               
-                </div>
-                <Footer/>
-         </div>
-                
-        )
+    let config = {
+      headers: {
+        'Authorization': 'Bearer ' + access_token
+      }
     }
+    axios.get(
+      'http://localhost:9999/buyerlogin/post',
+      config)
+      .then((response) => {
+        if (response.data.message) {
+          alert(response.data.message)
+        } else {
+          console.log(response.data.user.email);
+          this.setState({ email: response.data.user.email })
+          // console.log(this.state.email);
+        }
+      })
+      .catch()
+  }
+  onChange(e) {
+
+    this.setState({ selectedOption: e });
+
+  }
+
+
+
+
+
+  render() {
+    return (
+      <div>
+
+        <div>
+
+          <Topbar />
+        </div>
+        <div>
+
+
+          <Step />
+          <div className="container">
+            <div class="col-md-6 offset-md-3" align="center">
+
+              <br />
+              <div class="card card-outline-secondary p-3 mb-2   text-black border-secondary mb-3" color="blue">
+                <div class="card-body">
+                  <h4> <label>Select your payment method</label></h4>
+
+
+                  <RadioGroup rootColor="#171717" onChange={this.onChange} horizontal value="card">
+                    <RadioButton value="card" name="card1" rootColor="#171717" pointColor="#185ac4" defaultChecked="true">
+                      <img src="https://studiosinn.com/assets/public/img/credit-card-icons-png.png" width="200px" height="28px"></img>
+                    </RadioButton>
+                    <RadioButton value="paypal" rootColor="#171717" pointColor="#185ac4">
+                      <img src="https://image.flaticon.com/icons/png/128/888/888870.png" width="30px" height="30px"></img>
+                    </RadioButton>
+
+
+                  </RadioGroup>
+
+
+
+
+                </div></div></div></div>
+
+
+        </div>
+
+        {this.state.selectedOption == "card" && <div>
+          <Route render={(props) => (<Card {...props} Email={this.state.email} />)} exact></Route>
+        </div>}
+        {this.state.selectedOption == "paypal" && <div>
+          <Paypal />
+        </div>}
+
+
+        <div>
+
+
+        </div>
+
+        <div>
+
+        </div>
+        <Footer />
+      </div>
+
+    )
+  }
 
 
 

@@ -1,6 +1,6 @@
-const buydelivery = require('../../models/buydelivery');
-const myselfdelivery = require('../../models/myself');
-const pickupdelivery = require('../../models/pickup');
+const buydelivery = require('../../models/Nivethika/buydelivery');
+const myselfdelivery = require('../../models/Nivethika/myself');
+const pickupdelivery = require('../../models/Nivethika/pickup');
 //add delivery details of obtion buy for myself
 const SaveDelivery_gift = async (req, res) => {
     if (req.body) {

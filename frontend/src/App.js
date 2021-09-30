@@ -115,11 +115,8 @@ function App() {
           {/* Malith */}
 
 
-        
-          
-          
-         
-         
+                 
+     {/* Nivethika */}
           <Route exact path='/cart' render={(props) => (<CartScreen {...props} Email={email}/>)} exact></Route>
           {/* <Route exact path='/login' component={login}></Route> */}
           <Route exact path='/logincheck' component={Logincheck}></Route>
@@ -128,7 +125,12 @@ function App() {
           <Route exact path='/Accountant' component={Accountant}></Route>
           <Route exact path='/revenue' component={loginnav}></Route>
           <Route exact path='/view' component={loginnav}></Route>
-          <Route exact path='/product/:id' render={(props) => (<ProductScreen {...props} Email={email}/>)} exact ></Route>
+          <Route exact path='/product/:id' render={(props) => (<ProductScreen {...props} Email={email} />)} exact ></Route>
+             {/* Nivethika */}
+          
+          
+         
+         
         
         {/* Jayamini */}
         <Route path ="/panel" component={nav} exact/>

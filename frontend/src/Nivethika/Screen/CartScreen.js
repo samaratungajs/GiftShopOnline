@@ -97,7 +97,7 @@ class  CartScreen extends Component{
                 
                 <Cartnavigation/>
             <div className="cartScreen">
-                <div className="cartScreen__left">{this.props.Email}{this.state.username}
+                <div className="cartScreen__left">
                     <h2>Shopping cart</h2>
                         {this.state.product.length  === 0 &&
                             <div>

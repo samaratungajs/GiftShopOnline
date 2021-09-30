@@ -1,0 +1,31 @@
+#hide{
+  font-size: large ;
+  color: white;
+  
+}
+
+.card-title center{
+  display: flex;
+  width: 100%;
+  justify-content: left;
+
+}
+.center1{
+  display: flex;
+  width: 100%;
+  justify-content: center;
+
+}
+#tot{
+  font-size: large ;
+  color:#000000;
+}
+
+
+@media print {
+    #printbutton {
+      display: none;
+    margin-right: 0cm;
+    }
+  }
+ 
