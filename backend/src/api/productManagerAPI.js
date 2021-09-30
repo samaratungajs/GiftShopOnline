@@ -14,7 +14,12 @@ module.exports = function() {
     router.put('/update/:id', controller.updateGiftItem);
     router.put('/approveitem/:id', controller.ApproveGiftItems);
     router.put('/rejectitem/:id', controller.RejectGiftItems);
-
+    router.delete('/deletearchive/:id', controller.deleteArchiveItem);
+    router.get('/supitems', controller.giftItemsfromsup);
+    router.get('/itemsuppliers', controller.itemSupplierDetails);
+    router.get('/allsuppliers', controller.getAllSuppliers);
+    router.get('/searchsupp/:id', controller.searchSuppliers);
+    router.get('/getoneitem/:id', controller.getitemsById);
 
     return router;
 }

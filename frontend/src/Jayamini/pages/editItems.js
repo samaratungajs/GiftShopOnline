@@ -41,7 +41,7 @@ class Researcher extends Component {
   }
 
   componentDidMount(){
-    axios.get(`http://localhost:9999/productmanager/getitem/${this.props.match.params.id}`)
+    axios.get(`http://localhost:9999/productmanager/getoneitem/${this.props.match.params.id}`)
     .then(response => {
         this.setState({productName : response.data.data.productName})
         this.setState({brand: response.data.data.brand})
@@ -145,10 +145,10 @@ class Researcher extends Component {
   
       }
       console.log('Data to send', giftItem);
-      axios.post('http://localhost:9999/productmanager/create', giftItem)
+      axios.put(`http://localhost:9999/productmanager/update/${this.props.match.params.id}`, giftItem)
         .then(response => {
           store.addNotification({
-            title: "Gift Item Upload",
+            title: "Gift Item Update",
             message: "Success",
             type:"success",
             container: "top-right",

@@ -7,6 +7,11 @@ import "animate.css";
 import 'react-notifications-component/dist/theme.css'
 
 class eCommercePage extends Component {
+  constructor(props) {
+    super(props);
+    this.onChange = this.onChange.bind(this);
+
+  }
 state = {
   data: [
       {
@@ -72,7 +77,8 @@ state = {
         field: 'button'
       }
   ],
-  items:[]
+  items:[],
+  productName:''
 }
 
 componentDidMount(){
@@ -147,6 +153,27 @@ handleDeleteItem = (item) => {
   
 }
 
+onArchive(e) {
+  window.location=`/archive`
+}
+
+onChange(e){
+  this.setState({ [e.target.name]: e.target.value });
+  axios.get(`http://localhost:9999/productmanager/getitem/${this.state.productName}`)   
+  .then(response => {
+    this.setState({items : response.data.data })
+  })
+
+}
+handleChange =(files)=>{
+  this.setState({
+    files:files
+  })
+}
+onClear() {
+  window.location.reload(false);
+}
+
 
 handleEditItem = (id) => {
   window.location=`/editgift/${id}`
@@ -186,7 +213,16 @@ render() {
        <ReactNotification/>
       <MDBCard className="w-100 ">
         <MDBCardBody>
-        <div align="right" >           
+        <div align="right" >  
+        <div class="input-group mb-2 w-25" >
+                <input type="text" class="form-control" name="productName" value={this.state.productName} onChange={this.onChange} placeholder="Search Items" aria-label="Recipient's username" aria-describedby="basic-addon2"/>
+                <div class="input-group-append">
+                <button type="button" class="btn btn-primary" onClick={this.onChange}>
+                    <i class="fas fa-search"></i>
+                  </button>
+                  <button onClick={this.onArchive} className="btn  btn-primary m-1" data-toggle="tooltip" data-placement="top" title="View archive"> <i class="fa fa-archive"></i> </button>
+                </div>
+              </div>         
                   </div>
           <MDBTable className="product-table">
           {/* columns={columns}  */}

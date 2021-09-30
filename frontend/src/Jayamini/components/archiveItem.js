@@ -75,13 +75,39 @@ state = {
         field: 'button'
       }
   ],
-  items:[]
+  items:[],
+  productName: '',
+      brand: '',
+      supplier: "giftery imports",
+      category: '',
+      description:'',
+      quantity: 0,
+      pricePItem: 0,
+      wholesalePrice: 0,
+      imgURL: '',
+      discountPItem:0,
+      deliveryCpItem: 0,
+      status: "approved",
+      files: ''
 }
 
 componentDidMount(){
   axios.get('http://localhost:9999/productmanager/archiveitems')
   .then(response => {
       this.setState({items : response.data.data })
+      this.setState({productName : response.data.data.productName})
+      this.setState({brand: response.data.data.brand})
+      this.setState({supplier: response.data.data.supplier})
+      this.setState({category: response.data.data.category})
+      this.setState({description: response.data.data.description})
+      this.setState({quantity: response.data.data.quantity})
+      this.setState({pricePItem: response.data.data.pricePItem})
+      this.setState({wholesalePrice: response.data.data.wholesalePrice})
+      this.setState({discountPItem: response.data.data.discountPItem})
+      this.setState({deliveryCpItem: response.data.data.deliveryCpItem})
+      this.setState({imgURL: response.data.data.imageURL})
+      this.setState({status: response.data.data.status})
+
   })
 }
 
@@ -120,39 +146,68 @@ handleDeleteItem = (item) => {
   })
 }
 
-handleApproveItem = (item) => {
-  store.addNotification({
-    title: "Gift Item",
-    message: "Accepted",
-    type:"success",
-    container: "top-right",
-    insert: "top",
-    animationIn: ["animated", "fadein"],
-    animationOut: ["animated", "fadeout"],
-    
-    dismiss: {
-      duration: 2000,
-      showIcon:true
-    },
-    width: 400,
-   
+handleRestoreItem = (item) => {
+  let giftItem = {
+    productName: item.productName,
+    brand: item.brand,
+    supplier: item.supplier,
+    category: item.category,
+    description: item.description,
+    quantity: item.quantity,
+    pricePItem: item.pricePItem,
+    wholesalePrice: item.wholesalePrice,
+    discountPItem: item.discountPItem,
+    deliveryCpItem: item.deliveryCpItem,
+    imageURL: item.imageURL,
+    status: 'approved'
+  }
+  console.log(giftItem)
+  axios.post('http://localhost:9999/productmanager/create', giftItem)
+  .then(response => {
+    store.addNotification({
+      title: "Gift Item ",
+      message: "Restored",
+      type:"success",
+      container: "top-right",
+      insert: "top",
+      animationIn: ["animated", "fadein"],
+      animationOut: ["animated", "fadeout"],
+      
+      dismiss: {
+        duration: 2000,
+        showIcon:true
+      },
+      width: 400,
+     
+    })
+    axios.delete(`http://localhost:9999/productmanager/deletearchive/${item._id}`)   
+    .then(response=>{
+      store.addNotification({
+        title: "Gift Item",
+        message: "Removed",
+        type:"warning",
+        container: "top-right",
+        insert: "top",
+        animationIn: ["animated", "fadein"],
+        animationOut: ["animated", "fadeout"],
+        
+        dismiss: {
+          duration: 3000,
+          showIcon:true
+        },
+        width: 400,
+       
+      })
+        this.componentDidMount();
+    }).catch(error=>{
+        console.log(error.message);
+        alert(error.message);
+    })
+  }).catch(error => {
+    console.log(error.message);
+    alert(error.message);
   })
-  store.addNotification({
-    title: "Email sent",
-    message: "to supplier",
-    type:"success",
-    container: "top-right",
-    insert: "top",
-    animationIn: ["animated", "fadein"],
-    animationOut: ["animated", "fadeout"],
-    
-    dismiss: {
-      duration: 2000,
-      showIcon:true
-    },
-    width: 400,
-   
-  })
+
 }
 
 
@@ -222,7 +277,7 @@ render() {
               <td className="pt-4">{item.discountPItem} %</td>
               <td className="pt-4">{item.quantity}</td>
               <td className="pt-4"><strong>{item.pricePItem} LKR</strong></td>
-              <td className="pt-4"><div align="center"><button className="btn btn-success m-1" onClick={() => this.handleApproveItem(item)}>Restore <i class="fas fa-trash-restore"></i> </button> 
+              <td className="pt-4"><div align="center"><button className="btn btn-success m-1" onClick={() => this.handleRestoreItem(item)}>Restore <i class="fas fa-trash-restore"></i> </button> 
               </div></td>
               </tr>
             ))}

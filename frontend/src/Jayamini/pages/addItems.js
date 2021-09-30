@@ -23,7 +23,7 @@ class Researcher extends Component {
     this.state = {
       productName: '',
       brand: '',
-      supplier: "giftery imports",
+      supplier: "Giftery",
       category: '',
       description:'',
       quantity: 0,
@@ -180,7 +180,7 @@ class Researcher extends Component {
                 </div>
                 <div class="col-12">
                   <label for="inputEmail4" class="form-label">Product Brand</label>
-                  <input type="email" class="form-control" id="brand" name="brand" value={this.state.brand} onChange={this.onChange}  required/>
+                  <input type="text" class="form-control" id="brand" name="brand" value={this.state.brand} onChange={this.onChange}  required/>
                 </div>
                 <div class="col-12">
                   <label for="inputState" class="form-label">Product Category</label>
@@ -190,17 +190,17 @@ class Researcher extends Component {
                     <option value="watches">Watches</option>
                     <option value="flowers">Flowers</option>
                     <option value="perfume">Perfume</option>
-
+                    <option value="offers">Seasonal offers</option>
                   </select>
                 </div>
                 <div class="col-12">
                   <label for="inputEmail4" class="form-label">Quantity</label>
-                  <input type="Number" class="form-control" id="quantity" name="quantity" value={this.state.quantity} onChange={this.onChange}  />
+                  <input type="Number" class="form-control" id="quantity" name="quantity" value={this.state.quantity} onChange={this.onChange} required />
                 </div>
                 <div className="row">
                 <div class="col-md-6">
                   <label for="inputState" class="form-label">Price per Item</label>
-                  <input type="Number" class="form-control" id="pricePItem" name="pricePItem" value={this.state.pricePItem} onChange={this.onChange} />
+                  <input type="Number" class="form-control" id="pricePItem" name="pricePItem" value={this.state.pricePItem} onChange={this.onChange} required />
 
                 </div>
 
@@ -212,7 +212,7 @@ class Researcher extends Component {
                 </div>
                 <div class="col-12">
                   <label for="inputEmail4" class="form-label">Delivery Charge per Item</label>
-                  <input type="Number" class="form-control" id="deliveryCpItem" name="deliveryCpItem" value={this.state.deliveryCpItem} onChange={this.onChange} />
+                  <input type="Number" class="form-control" id="deliveryCpItem" name="deliveryCpItem" value={this.state.deliveryCpItem} onChange={this.onChange} required />
                 </div>
 
                 <label for="floatingTextarea" >Product Description</label>
@@ -222,7 +222,7 @@ class Researcher extends Component {
 
                 </div>
                 <div class="col-12 pt-3 pb-3">
-                <input type="file" onChange={(e)=>{this.handleChange(e.target.files)}} />
+                <input type="file" onChange={(e)=>{this.handleChange(e.target.files)}} required />
                 <button type="button" class="btn btn-light" onClick={this.handleUpload}><i class="fa fa-upload" aria-hidden="true"></i></button> 
                 {/* <button onClick={this.showIMG}>Show</button>  */}
                 <img id="new-img"/>

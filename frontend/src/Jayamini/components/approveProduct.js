@@ -9,7 +9,14 @@ import 'bootstrap/dist/css/bootstrap.css';
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
 import Popover from 'react-bootstrap/Popover'
 import Button from 'react-bootstrap/Button';
+import emailjs from 'emailjs-com';
 class eCommercePage extends Component {
+  constructor(props) {
+    super(props);
+    emailjs.init('user_4wlcQJ1h6HqGKYmkwG931');
+
+    }
+
 state = {
   data: [
       {
@@ -75,7 +82,7 @@ state = {
         field: 'button'
       }
   ],
-  items:[]
+  items:[],
 }
 
 componentDidMount(){
@@ -120,12 +127,32 @@ handleDeleteItem = (item) => {
   })
 }
 
-handleDeleteItem = (item) => {
-  axios.put(`http://localhost:9999/productmanager/approveitem/${item._id}`)   
+handleRejectItem = (item) => {
+  const btn = document.getElementById('button2');
+
+  document.getElementById('form2')
+   .addEventListener('submit', function(event) {
+     event.preventDefault();
+  
+     btn.value = 'Sending...';
+  
+     const serviceID = 'default_service';
+     const templateID = 'template_d39px3o';
+  
+     emailjs.sendForm(serviceID, templateID, this)
+      .then(() => {
+        btn.value = 'Send Email';
+        alert('Email Sent!');
+      }, (err) => {
+        btn.value = 'Send Email';
+        alert(JSON.stringify(err));
+      });
+  });
+  axios.put(`http://localhost:9999/productmanager/rejectitem/${item._id}`)   
   .then(response=>{
     store.addNotification({
-      title: "Email sent",
-      message: "to supplier",
+      title: "Gift item ",
+      message: "Rejected",
       type:"danger",
       container: "top-right",
       insert: "top",
@@ -139,7 +166,6 @@ handleDeleteItem = (item) => {
       width: 400,
      
     })
-    alert("Gift item Rejected")
       this.componentDidMount();
   }).catch(error=>{
       console.log(error.message);
@@ -148,11 +174,33 @@ handleDeleteItem = (item) => {
 }
 
 handleApprove = (item) => {
+
+      const btn = document.getElementById('button');
+
+    document.getElementById('form')
+    .addEventListener('submit', function(event) {
+      event.preventDefault();
+
+      btn.value = 'Sending...';
+
+      const serviceID = 'default_service';
+      const templateID = 'template_8gql90b';
+
+      emailjs.sendForm(serviceID, templateID, this)
+        .then(() => {
+          btn.value = 'Send Email';
+          alert('Email Sent!');
+        }, (err) => {
+          btn.value = 'Send Email';
+          alert(JSON.stringify(err));
+        });
+    });
+
   axios.put(`http://localhost:9999/productmanager/approveitem/${item._id}`)   
   .then(response=>{
     store.addNotification({
-      title: "Email sent",
-      message: "to supplier",
+      title: "Giift Item",
+      message: "Approved",
       type:"warning",
       container: "top-right",
       insert: "top",
@@ -166,7 +214,6 @@ handleApprove = (item) => {
       width: 400,
      
     })
-    alert("Gift item Approved")
       this.componentDidMount();
   }).catch(error=>{
       console.log(error.message);
@@ -240,10 +287,29 @@ render() {
               <td className="pt-4">{item.discountPItem} %</td>
               <td className="pt-4">{item.quantity}</td>
               <td className="pt-4"><strong>{item.pricePItem} LKR</strong></td>
-              <td className="pt-4"><div align="center"><button className="btn btn-success m-1" onClick={() => this.handleApprove(item)}>Approve <i class="far fa-check-circle"></i> </button> 
+              <td className="pt-4"><div align="center">
+                <form id="form">
+                    <div class="field">
+                      <input type="hidden" name="to_name" id="to_name" value="Sir"/>
+                    </div>
+                    <div class="field">
+                      <input type="hidden" name="to_status" id="to_status" value="Approved"/>
+                    </div>
+                    <div class="field">
+                      <input type="hidden" name="to_email" id="to_email" value={item.supplier}/>
+                    </div>
+                    <button className="btn btn-success m-1" id="button" onClick={() => this.handleApprove(item)}>Approve <i class="far fa-check-circle"></i> </button>
+                  </form>   
               </div><div align="center">
-              
-                <button className="btn btn-danger m-1 "  onClick={() => this.handleDeleteItem(item)}> <a className="text-danger">h</a>  Reject  <i class="fa fa-ban" aria-hidden="true"></i> </button> 
+              <form id="form2">
+                    <div class="field">
+                      <input type="hidden" name="to_name2" id="to_name2" value="Sir"/>
+                    </div>
+                    <div class="field">
+                      <input type="hidden" name="email_to2" id="email_to2" value={item.supplier}/>
+                    </div>
+                    <button className="btn btn-danger m-1 " id="button2" onClick={() => this.handleRejectItem(item)}> <a className="text-danger">h</a>  Reject  <i class="fa fa-ban" aria-hidden="true"></i> </button> 
+                  </form>   
                
                 </div></td>
               </tr>
@@ -252,6 +318,7 @@ render() {
           </MDBTable>
         </MDBCardBody>
       </MDBCard>
+      <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
     </MDBRow>
     );
   }

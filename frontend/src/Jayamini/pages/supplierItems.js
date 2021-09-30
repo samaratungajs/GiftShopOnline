@@ -40,16 +40,10 @@ render() {
             <div className="col mb-5 bg-secondary bg-opacity-10">
               <TopNav/>
             <div className="m-5 mt-4">
+            <div className="mb-2" >
               <h3 align="center" >Gift Items by Suppliers</h3>
-                <div align="right" >
-                <div class="input-group mb-3 w-25" >
-                <input type="text" class="form-control" placeholder="Search Items" aria-label="Recipient's username" aria-describedby="basic-addon2"/>
-                <div class="input-group-append">
-                <button type="button" class="btn btn-primary">
-                    <i class="fas fa-search"></i>
-                  </button>
-                </div>
-              </div>
+                
+                
               </div>
 
               <Products/>

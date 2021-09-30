@@ -22,7 +22,7 @@ state = {
         datasets: [
           {
             label: "% of Votes",
-            data: [1150, 2100, 5100, 3110,],
+            data: [1, 1, 3, 1,],
             backgroundColor: [
               "rgba(255, 134,159,0.4)",
               "rgba(98,  182, 239,0.4)",
@@ -72,7 +72,7 @@ state = {
         datasets: [
           {
             label: "% of Users",
-            data: [150, 25, 2, 3, 1],
+            data: [4, 5, 1, 1, 1],
             backgroundColor: [
               "rgba(255, 134,159,0.4)",
               "rgba(98,  182, 239,0.4)",
@@ -194,14 +194,14 @@ render() {
                 <div class="card border-primary border-2 ml-3 mb-3 w-15">
                 <div class="card-body">
                     <i class="fas fa-gifts fa-2x"></i>
-                    <span class="card-text  text-secondary"><h5>Placed Orders</h5>  <h5>95</h5> </span>
+                    <span class="card-text  text-secondary"><h5>Placed Orders</h5>  <h5>05</h5> </span>
                 </div>
                 </div> </div>
                 <div className="col">
                 <div class="card border-primary border-2 ml-3 mb-3 w-15">
                 <div class="card-body">
                 <i class="fas fa-file-invoice-dollar fa-2x"></i>
-                <span class="card-text  text-secondary"><h5>Average Income</h5>  <h5>98000 LKR</h5> </span>
+                <span class="card-text  text-secondary"><h5>Average Income</h5>  <h5>67200 LKR</h5> </span>
                 </div>
                 </div> </div>
                 </div>

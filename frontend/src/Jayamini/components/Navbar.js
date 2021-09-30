@@ -62,7 +62,7 @@ function Navbar() {
                 </li>   
               );
             })}
-            <h6 className="text-white mt-4" align="center">Log out <i class="fas fa-sign-out-alt"></i></h6>
+            <h6 className="text-white mt-4" align="center" > <a class="text-white" href="/user/login" style={{ textDecoration: 'none' }}>Log out</a> <i class="fas fa-sign-out-alt"></i></h6>
           </ul>
         </nav>
       </IconContext.Provider>
