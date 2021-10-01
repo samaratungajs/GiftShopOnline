@@ -14,11 +14,11 @@
      color: rgb(56, 56, 56);
  }
 .AtopCart{
-    margin-left: 1em;
+    margin-left: 1em !important;
 }
 
 .AtopUser{
-    margin-left: 4em;
+    margin-left: 3em !important;
 }
  .Anavicon{
     color: rgb(255, 255, 255);
@@ -29,10 +29,10 @@
   }
  
   
-  .num-cart{
+  .AcartPill{
       position:absolute;
       top: 15px;
-      right: 100px;
+      right: 265px;
       width:20px;
       height:20px;
       font-size: 0.8rem;
@@ -42,7 +42,7 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      font-weight: 400;
+      font-weight: 500;
   }
 
  

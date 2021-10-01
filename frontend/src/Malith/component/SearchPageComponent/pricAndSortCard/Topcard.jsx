@@ -13,12 +13,13 @@ export default class Topcard extends Component {
         return (
             <div className="row px-2">
       <div className="card">
+        <div className="card-body">
           {this.props.results&&this.props.status&&<h5 className="mt-2 text-warning">Showing {this.props.results} resualts found...</h5>}
-          <div class="d-flex justify-content-between align-items-center">
-          <div class="d-inline-flex">
+          <div className="d-flex justify-content-between align-items-center">
+          <div className="d-inline-flex">
                     <p className="h-5 pt-2 mx-2">Price Range </p>
-                    <input type="number" placeholder="0" min="0" max="120000" className="ApriceRangeBox"/><b className="mt-2">-</b>
-                    <input type="number" placeholder="0" min="0" max="120000" className="ApriceRangeBox" style={{marginLeft:"8px"}}/>
+                    <input type="number" placeholder="min" min="0" max="120000" className="ApriceRangeBox"/><b className="mt-2">-</b>
+                    <input type="number" placeholder="max" min="0" max="120000" className="ApriceRangeBox" style={{marginLeft:"8px"}}/>
                 </div>
             
 
@@ -39,6 +40,7 @@ export default class Topcard extends Component {
 </div>
 
                 </div>
+  </div>
   </div>
         )
     }

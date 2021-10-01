@@ -2,14 +2,18 @@
 
       width:20em;
       height:3em;
-      font-size: 0.8rem;
       border-radius: 20px;
       color: white;
       background-color: rgb(233, 64, 13);
       display: flex;
       justify-content: center;
       align-items: center;
-      font-weight: 400;
+
+}
+
+.AcardHotPriceText{
+    font-size: 0.9rem;
+    font-weight: 600;
 }
 
 .AfireIcon{
@@ -17,7 +21,6 @@
     -webkit-text-fill-color: transparent;
     -webkit-background-clip: text;
 }
-
 .AcardHover:hover{
     transform: scale(1.1);
 }

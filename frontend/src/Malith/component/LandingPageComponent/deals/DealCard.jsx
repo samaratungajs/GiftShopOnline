@@ -1,22 +1,26 @@
 import React, { Component } from 'react'
 import { Col } from 'react-bootstrap'
 import './DealsCard.css'
+import {Link} from "react-router-dom"
+export default function DealCard ({proc}) {
 
-export default class DealCard extends Component {
-    render() {
         return (
-                <Col xs={6} md={2}>
+                <Col xs={6} md={2} >
             <div className="card AcardHover">
-                <div className="card-body" style={{border:"none"}}>
-                    <div className="card-img-actions"> <img src="https://res.cloudinary.com/dxfq3iotg/image/upload/v1562074043/234.png" className="card-img img-fluid" width="96" height="350" alt=""/> </div>
-                </div>
-                <div className="card-body bg-light d-flex align-items-center">
-                   <span className="AcardHotPrice"><h5 className="m-1 font-weight-semibold">LKR 250.99</h5></span>
-                </div>
-            </div>
+              <div className="card-body">
+                  <div className="card-img-actions"> <img src={proc.imageURL} className="card-img img-fluid" width="96" height="350" alt=""/> </div>
+              </div>
+              <div className="card-body bg-light text-center" style={{maxHeight:"70rem"}}>
+                  <div className="mb-2 AproductCardHeader">
+                      <h6 className="font-weight-semibold mb-2"> <Link to={`/product/${proc._id}`} className="text-default mb-2" data-abc="true">{proc.productName}</Link> </h6>
+                  </div>
+                  <h4 className="mb-0 font-weight-bold" style={{color:"black"}}>LKR {proc.wholesalePrice}</h4><span className="Astrike-text">LKR {proc.pricePItem}</span> 
+              </div>
+          </div>
+
    
                 
  </Col>
         )
     }
-}
+

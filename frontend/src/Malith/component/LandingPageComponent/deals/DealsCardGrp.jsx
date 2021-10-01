@@ -2,8 +2,11 @@ import React, { Component } from 'react'
 import DealCard from './DealCard'
 import {Container,Row} from 'react-bootstrap'
 
-export default class DealsCardGrp extends Component {
-    render() {
+export default function DealsCardGrp({dlist}) {
+
+
+
+
         return (
             <div className="AcatGrp">
                 
@@ -11,15 +14,12 @@ export default class DealsCardGrp extends Component {
         <Container>
         
   <Row>
-    <DealCard/>
-    <DealCard/>
-    <DealCard/>
-    <DealCard/>
-    <DealCard/>
-    <DealCard/>
+  {dlist.map((d)=>(
+                            <DealCard proc={d}/>
+                        ))}
   </Row>
 </Container>
 </div>
         )
     }
-}
+

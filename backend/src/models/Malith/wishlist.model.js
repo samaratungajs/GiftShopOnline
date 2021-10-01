@@ -6,14 +6,12 @@ const wishlistSchema = new mongoose.Schema({
     category: { type: String, required: true },
     description: { type: String, required: true },
     pricePItem: { type: Number, required: true },
+    note: { type: String, required: false, default:"" },
     wholesalePrice: { type: Number, required: true },
     imageURL: { type: String, required: true },
     currentuser: { type: String, required: true },
     productId: { type: String, required: true },
-    supplier: { type: String, required: true }
-}, 
-{
-    timestamps:true
+    supplier: { type: String, required: true },
 }
 
 );

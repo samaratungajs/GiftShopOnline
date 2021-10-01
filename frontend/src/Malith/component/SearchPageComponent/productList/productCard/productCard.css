@@ -1,4 +1,11 @@
+.AproductCardHeader{
+    color: black !important;
+}
 
+.AproductCardHeader:hover{
+    color: rgb(3, 235, 146);
+    text-shadow: chartreuse;
+}
 
 .AproductIcons{
     color: rgb(90, 90, 90);

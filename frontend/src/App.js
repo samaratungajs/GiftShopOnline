@@ -31,9 +31,6 @@ import axios from 'axios';
 import { BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 import WishListPage from "./Malith/pages/wishlistPage/WishListPage";
 import MyOrders from "./Malith/pages/myOrders/MyOrdersPage";
-import LineChart from "./Malith/component/myOrdersComponet/lineChart/LineChart";
-
-
 
 import Payment from "./Nivethika/Screen/payment";
 import Accountant from "./Nivethika/SideNavbar/Accountant";
@@ -51,6 +48,7 @@ import itemsArchive from "./Jayamini/pages/archiveitems";
 import itemsEdit from "./Jayamini/pages/editItems";
 import managerDashboard from "./Jayamini/pages/dashboard"
 import BuyerReport from "./Malith/pages/buyerReport/BuyerReport";
+import OrderAnalytics from "./Malith/component/myOrdersComponet/orderAnalytics/OrderAnalytics";
 
 
 function App() {
@@ -61,7 +59,7 @@ function App() {
 
         let config = {
           headers: {
-            'Authorization': 'Bearer ' + access_token
+            'Authorization': 'Bearer ' + access_token 
           }
         }
         axios.get( 
@@ -98,9 +96,6 @@ function App() {
         <WishListPage/>
         </Route>
 
-        <Route exact component path="/abuyer/chart">
-        <LineChart/>
-        </Route>
           <Route exact component path="/abuyer/search">
             <SearchPage />
           </Route>
@@ -109,8 +104,12 @@ function App() {
             <WishListPage />
           </Route>
 
+          <Route exact component path="/abuyer/orderanalytics">
+            <OrderAnalytics/>
+          </Route>
+
           <Route exact component path="/abuyer/buyerreport">
-            <BuyerReport />
+            <BuyerReport/>
           </Route>
           {/* Malith */}
 

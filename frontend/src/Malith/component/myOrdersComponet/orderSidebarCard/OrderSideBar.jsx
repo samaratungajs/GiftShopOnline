@@ -36,7 +36,7 @@ export default function OrderSideBar() {
             setcomOrder("")
         }
 
-        else if(search==="?cat=delorder"){
+        else if(search==="?cat=deleted"){
             setdelOrder("rgba(46, 153, 161, 0.808)")
             setall("")
             setpenOrder("")
@@ -45,11 +45,10 @@ export default function OrderSideBar() {
         }
 
         else{
-            setall("rgba(46, 153, 161, 0.808)")
+            setcomOrder("rgba(46, 153, 161, 0.808)")
             setordAnalytic("")
             setpenOrder("")
             setdelOrder("")
-            setcomOrder("")
         }
             
         }, [search])
@@ -62,10 +61,9 @@ export default function OrderSideBar() {
 
         <h5 class="font-weight-bold">My Orders</h5>
                     <ul class="list-group">
-                    <Link to={"/abuyer/myorders"} style={{textDecoration:"none"}}><li class="list-group-item AlistItem AlistItemAction d-flex justify-content-between align-items-center AcatCard" style={{backgroundColor:all}}> All Orders <span class="badge AQuantityCat badge-pill">8</span> </li></Link>
-                    <Link to={"/abuyer/myorders/?cat=comorder"} style={{textDecoration:"none"}}><li class="list-group-item AlistItem AlistItemAction d-flex justify-content-between align-items-center AcatCard" style={{backgroundColor:comOrder}}> Completed Orders <span class="badge AQuantityCat badge-pill">2</span> </li></Link>
-                    <Link to={"/abuyer/myorders/?cat=penorder"} style={{textDecoration:"none"}}><li class="list-group-item AlistItem AlistItemAction d-flex justify-content-between align-items-center AcatCard" style={{backgroundColor:penOrder}}> Pending Clearenece <span class="badge AQuantityCat badge-pill">2</span> </li></Link>
-                    <Link to={"/abuyer/myorders/?cat=delorder"} style={{textDecoration:"none"}}><li class="list-group-item AlistItem AlistItemAction d-flex justify-content-between align-items-center AcatCard" style={{backgroundColor:delOrder}}> Deleted Orders  <span class="badge AQuantityCat badge-pill">2</span> </li></Link>
+                    
+                    <Link to={"/abuyer/myorders"} style={{textDecoration:"none"}}><li class="list-group-item AlistItem AlistItemAction d-flex justify-content-between align-items-center AcatCard" style={{backgroundColor:comOrder}}> Completed Orders <span class="badge AQuantityCat badge-pill">2</span> </li></Link>                   
+                     <Link to={"/abuyer/myorders/?cat=deleted"} style={{textDecoration:"none"}}><li class="list-group-item AlistItem AlistItemAction d-flex justify-content-between align-items-center AcatCard" style={{backgroundColor:delOrder}}> Deleted Orders  <span class="badge AQuantityCat badge-pill">2</span> </li></Link>
                     <Link to={"/abuyer/myorders/?cat=ordanalytic"} style={{textDecoration:"none"}}><li class="list-group-item AlistItem AlistItemAction d-flex justify-content-between align-items-center AcatCard" style={{backgroundColor:ordAnalytic}}> Order Analytics </li></Link>
                     </ul>
                 

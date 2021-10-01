@@ -11,6 +11,7 @@ const cartApi = require('./src/api/Nivethika/cartApi');
 const paymentApi = require('./src/api/Nivethika/paymentApi');
 const aBuyerAPI = require('./src/api/Malith/buyer.api');
 const aWishlistAPI = require('./src/api/Malith/wishlist.api');
+const myOrderApi = require("./src/api/Malith/myOrder.api");
 const supplierRegisterAPI = require('./src/api/supplierRegisterApi');
 const buyerRegisterApi = require("./src/api/buyerRegisterApi");
 const buyerlogin = require("./src/routes/buyerlogin");
@@ -62,6 +63,7 @@ app.use('/delivery',delivery_buy());
 
 app.use('/abuyer', aBuyerAPI());
 app.use('/awishlist', aWishlistAPI());
+app.use('/myorders', myOrderApi());
 app.use('/buyer', buyerRegisterApi());
 app.use('/supplier', supplierRegisterAPI());
 app.use('/supplieritems', supplierItems());

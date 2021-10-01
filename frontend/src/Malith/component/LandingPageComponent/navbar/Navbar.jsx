@@ -4,7 +4,7 @@ import "./navbar.css";
 export default function Navbar() {
   return (
     <div>
-      <nav class="navbar Anavbar navbar-light bg-light navbar-expand-lg">
+      <nav class="navbar Anavbar navbar-light bg-light navbar-expand">
         <div class="container-fluid py-0">
           <button
             class="navbar-toggler"
@@ -21,7 +21,7 @@ export default function Navbar() {
             <ul class="navbar-nav Anavbar-nav me-auto mb-2 mb-lg-0">
               <li class="nav-item Anav-item">
                 <a class="nav-link Anav-link active Ahover" aria-current="page" href="/abuyer/search">
-                  HOME
+                  SHOPPING
                 </a>
               </li>
 

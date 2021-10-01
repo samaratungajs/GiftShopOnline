@@ -5,21 +5,49 @@ import Topbar from "../../component/LandingPageComponent/topbar/Topbar";
 import SideAdd from "../../component/WishlistComponent/sideAppAd/SideAdd";
 import WishlistCardGrp from "../../component/WishlistComponent/wishlist/wishlistCardGrp/WishlistCardGrp";
 import Navbar from "../../component/LandingPageComponent/navbar/Navbar"
+
 export default function WishListPage() {
 
 const [wishlist, setwishlist] = useState([])
+const [currentuser, setcurrentUser] = useState("");
 
   useEffect(() => {
+    getUser();
     document.body.style.backgroundColor = "#e8e8e8";
-    const fetchWishlist = async () =>{
-    const res = await axios.get("/awishlist/getwishlistitem");
-       setwishlist(res.data.data);
-     
-       
-  }
-        fetchWishlist();
-
+        
   }, [])
+
+
+  const getUser = async ()=>{
+  
+    const access_token = localStorage.getItem('token');
+        let config = {
+          headers: {
+            'Authorization': 'Bearer ' + access_token 
+          }
+        }
+        await axios.get( 
+            'http://localhost:9999/buyerlogin/post',
+            config)
+          .then( ( response ) => {
+            if(response.data.message){
+                alert(response.data.message)  
+            }else{   
+                fetchWishlist(response.data.user.email);
+            }         
+          } )
+          .catch()
+
+}
+
+
+const fetchWishlist = async (currentuser) =>{
+  const res = await axios.get(`/awishlist/getwishlistitem/${currentuser}`);
+     setwishlist(res.data.data);
+   
+     
+}
+
 
     return (
       <>

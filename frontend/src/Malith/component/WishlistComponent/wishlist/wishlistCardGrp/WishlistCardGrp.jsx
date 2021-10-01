@@ -2,6 +2,7 @@ import React from 'react'
 import WishlistCard from '../wishlistCard/WishlistCard'
 import './wishlistCardGrp.css'
 
+
 export default function WishlistCardGrp({wishlists}) {
 
 

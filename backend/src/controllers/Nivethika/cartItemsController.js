@@ -4,6 +4,7 @@ const GetItems = require('../../models/giftItem');
 const Payment = require('../../models/Nivethika/payment');
 //add items to cart
 const CreateCart = async (req, res) => {
+    console.log(req.body);
     if (req.body) {
         const cart = new Cartitems(req.body);
         await cart.save()

@@ -1,4 +1,5 @@
-import React, { Component } from 'react'
+import axios from 'axios';
+import React, { Component, useEffect, useState } from 'react'
 import BottomBar from "../../component/LandingPageComponent/bottomBar/BottomBar";
 import BrandLabels from "../../component/LandingPageComponent/brandLabels/BrandLabels";
 import CategoryCard from "../../component/LandingPageComponent/categories/cardgroup/CategoryCards";
@@ -11,8 +12,28 @@ import Navbar from "../../component/LandingPageComponent/navbar/Navbar";
 import ArrivalGrp from "../../component/LandingPageComponent/newArrivals/newArrivalGrp/ArrivalGrp";
 import Topbar from "../../component/LandingPageComponent/topbar/Topbar";
 
-export default class LandingPage extends Component {
-    render() {
+export default function LandingPage(){
+    const [deals, setdeals] = useState([]);
+    const [arrivals, setarrivals] = useState([]);
+
+    useEffect(() => {
+        document.body.style.backgroundColor = "#ffffff"
+        
+        fetchDeals();
+        fetchArrivals();
+
+    }, [])
+
+    const fetchDeals = async () =>{
+        const res = await axios.get("/abuyer/getspecialdeals");
+        setdeals(res.data)
+    }
+
+    const fetchArrivals = async () =>{
+        const res = await axios.get("/abuyer/getnewarrivals");
+        setarrivals(res.data)
+    }
+
         return (
             <>
 
@@ -20,9 +41,9 @@ export default class LandingPage extends Component {
       <Navbar/>
       <Header/>
       <CategoryCard/>
-      <DealsCardGrp/>
+      <DealsCardGrp dlist={deals}/>
       <MidBanner/>
-      <ArrivalGrp/>
+      <ArrivalGrp alist={arrivals}/>
       <BrandLabels/>
       <CustReview/>
       <BottomBar/>
@@ -31,4 +52,4 @@ export default class LandingPage extends Component {
             </>
         )
     }
-}
+

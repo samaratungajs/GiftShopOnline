@@ -46,12 +46,13 @@
 
 .AaddNoteLink{
     text-decoration: none !important;
-    color: rgb(88, 88, 88);
+    color: rgb(4, 142, 255);
     font-size: 17px;
 }
 
 .AaddNoteLink:hover{
-    color: rgb(255, 202, 28);
+    color: rgb(4, 21, 255);
+    cursor: pointer;
 }
 
 .writeInput{

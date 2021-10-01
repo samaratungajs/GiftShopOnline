@@ -1,0 +1,30 @@
+
+.Ac-pill {
+  align-items: center;
+  height: auto;
+  white-space: nowrap;
+  width: auto;
+
+  position: relative;
+  border-radius: 100px;
+  line-height: 1;
+  overflow: hidden;
+  padding: 0px 12px 0px 20px;
+  text-overflow: ellipsis;
+	line-height: 1.25rem;
+	color: #ffffff;
+	
+    word-break: break-word;
+ 
+ 
+}
+
+
+  .Ac-pill--success {
+      background: #23ca1a; }
+  .Ac-pill--warning {
+      background: #ffae00; }
+  .Ac-pill--danger {
+      background: #ff4436; }
+  .Ac-pill--primary {
+        background: #0086df; }

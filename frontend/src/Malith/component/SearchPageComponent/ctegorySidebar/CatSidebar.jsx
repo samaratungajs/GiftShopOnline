@@ -75,7 +75,7 @@ export default function CatSidebar() {
                     <Link to={"/abuyer/search/?cat=perfume"} style={{textDecoration:"none"}}><li class="list-group-item AlistItem AlistItemAction d-flex justify-content-between align-items-center AcatCard" style={{backgroundColor:perfumes}}> Perfumes <span class="badge AQuantityCat badge-pill">2</span> </li></Link>
                     <Link to={"/abuyer/search/?cat=flowers"} style={{textDecoration:"none"}}><li class="list-group-item AlistItem AlistItemAction d-flex justify-content-between align-items-center AcatCard" style={{backgroundColor:flowers}}> Flowers <span class="badge AQuantityCat badge-pill">2</span> </li></Link>
                     </ul>
-                <div className="container-fluid p-3">
+                <div className="container-fluid p-0">
                 <h5 class="font-weight-bold mt-2">Brands</h5>
                 <div className="d-flex justify-content-around"><div><img src={img1} alt="" style={{maxWidth:"18vh"}}/></div><div><img src={img2} alt="" style={{maxWidth:"18vh"}}/></div></div>
                 <div className="d-flex justify-content-around"><div><img src={img4} alt="" style={{maxWidth:"18vh"}}/></div><div><img src={img3} alt="" style={{maxWidth:"18vh"}}/></div></div>
