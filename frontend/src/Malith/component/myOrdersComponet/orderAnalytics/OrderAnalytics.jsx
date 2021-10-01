@@ -17,7 +17,6 @@ const OrderAnalytics=(props)=> {
 
 
   useEffect(() => {
-      fetchOrders();
       handleChange();
       
   }, [Udate,Ddate])
